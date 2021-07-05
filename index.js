@@ -10,4 +10,12 @@ const generateMap = (width, height) => {
   return arr;
 };
 
+const fillMap = (arr) => {
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = 0; j < arr[i].length; j++) {
+      arr[i][j] = ' ';
+    }
+  }
+};
+
 const printGame = (player, enemy, map) => {};
