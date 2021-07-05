@@ -2,6 +2,8 @@
 //   coordinates: [[height], [width]]
 // };
 const table = require('table').table;
+const mapWidth = 5;
+const mapHeight = 5;
 
 const generateMap = (width, height) => {
   const arr = new Array(height);
@@ -21,7 +23,7 @@ const fillMap = (arr) => {
 
 // const printGame = (player, enemy, map) => {};
 
-const map = generateMap(5, 5);
+const map = generateMap(mapWidth, mapHeight);
 fillMap(map);
 // console.log(map);
 console.log(table(map));
