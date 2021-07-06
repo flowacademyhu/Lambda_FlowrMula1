@@ -5,7 +5,7 @@ stdin.resume();
 stdin.setEncoding('utf8');
 
 const mapWidth = 10;
-const mapHeight = 10;
+const mapHeight = 20;
 
 const player = {
   coordinates: [
@@ -120,7 +120,7 @@ const printGame = (player, enemies) => {
     map = generateMap(mapWidth, mapHeight);
     printPlayerCar(player, map);
     printEnemyCars(enemies, map);
-    console.log(table(map));
+    console.log(table(map.slice(4, -4)));
     moveEnemies(enemies);
   }, 1000);
 };
