@@ -1,18 +1,22 @@
 const table = require('table').table;
+const stdin = process.stdin;
+stdin.setRawMode(true);
+stdin.resume();
+stdin.setEncoding('utf8');
 
 const mapWidth = 10;
 const mapHeight = 10;
 
 const player = {
   coordinates: [
-    { x: 1, y: mapHeight - 4 },
-    { x: 0, y: mapHeight - 3 },
+    { x: 2, y: mapHeight - 4 },
     { x: 1, y: mapHeight - 3 },
     { x: 2, y: mapHeight - 3 },
-    { x: 1, y: mapHeight - 2 },
-    { x: 0, y: mapHeight - 1 },
+    { x: 3, y: mapHeight - 3 },
+    { x: 2, y: mapHeight - 2 },
     { x: 1, y: mapHeight - 1 },
-    { x: 2, y: mapHeight - 1 }
+    { x: 2, y: mapHeight - 1 },
+    { x: 3, y: mapHeight - 1 }
   ]
 };
 
@@ -57,12 +61,38 @@ const printEnemyCars = (enemies, map) => {
   }
 };
 
-// const printGame = (player, enemy, map) => {};
+const movePlayerHorizontally = (player, x) => {
+  if (x === -1) {
+    for (const coordinate of player.coordinates) {
+      if (coordinate.x === 0) {
+        return;
+      }
+    }
+    for (let i = 0; i < player.coordinates.length; i++) {
+      player.coordinates[i].x -= 1;
+    }
+  }
+};
+
+const movePlayer = (player) => {
+  stdin.on('data', (key) => {
+    if (key === 'a') {
+      movePlayerHorizontally(player, -1);
+    } else if (key === 'q') {
+      process.exit();
+    }
+  });
+  // console.log(player.coordinates);
+};
+
 const printGame = (player, enemies) => {
   const map = generateMap(mapWidth, mapHeight);
   printPlayerCar(player, map);
   printEnemyCars(enemies, map);
-  console.log(table(map));
+  movePlayer(player);
+  setInterval(() => {
+    console.log(table(map));
+  }, 1000);
 };
 
 printGame(player, enemies);
