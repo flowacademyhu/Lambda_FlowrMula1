@@ -9,14 +9,14 @@ const mapHeight = 10;
 
 const player = {
   coordinates: [
-    { x: 3, y: mapHeight - 4 },
-    { x: 2, y: mapHeight - 3 },
-    { x: 3, y: mapHeight - 3 },
-    { x: 4, y: mapHeight - 3 },
-    { x: 3, y: mapHeight - 2 },
-    { x: 2, y: mapHeight - 1 },
-    { x: 3, y: mapHeight - 1 },
-    { x: 4, y: mapHeight - 1 }
+    { x: 3, y: mapHeight - 8 },
+    { x: 2, y: mapHeight - 7 },
+    { x: 3, y: mapHeight - 7 },
+    { x: 4, y: mapHeight - 7 },
+    { x: 3, y: mapHeight - 6 },
+    { x: 2, y: mapHeight - 5 },
+    { x: 3, y: mapHeight - 5 },
+    { x: 4, y: mapHeight - 5 }
   ]
 };
 
