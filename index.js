@@ -32,6 +32,18 @@ const enemies = [
       { x: 1, y: 3 },
       { x: 2, y: 3 }
     ]
+  },
+  {
+    coordinates: [
+      { x: mapWidth - 2, y: 0 },
+      { x: mapWidth - 3, y: 1 },
+      { x: mapWidth - 2, y: 1 },
+      { x: mapWidth - 1, y: 1 },
+      { x: mapWidth - 2, y: 2 },
+      { x: mapWidth - 3, y: 3 },
+      { x: mapWidth - 2, y: 3 },
+      { x: mapWidth - 1, y: 3 }
+    ]
   }
 ];
 
