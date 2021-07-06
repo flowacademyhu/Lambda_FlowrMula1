@@ -9,14 +9,14 @@ const mapHeight = 10;
 
 const player = {
   coordinates: [
-    { x: 2, y: mapHeight - 4 },
-    { x: 1, y: mapHeight - 3 },
+    { x: 3, y: mapHeight - 4 },
     { x: 2, y: mapHeight - 3 },
     { x: 3, y: mapHeight - 3 },
-    { x: 2, y: mapHeight - 2 },
-    { x: 1, y: mapHeight - 1 },
+    { x: 4, y: mapHeight - 3 },
+    { x: 3, y: mapHeight - 2 },
     { x: 2, y: mapHeight - 1 },
-    { x: 3, y: mapHeight - 1 }
+    { x: 3, y: mapHeight - 1 },
+    { x: 4, y: mapHeight - 1 }
   ]
 };
 
@@ -85,11 +85,13 @@ const movePlayer = (player) => {
 };
 
 const printGame = (player, enemies) => {
-  const map = generateMap(mapWidth, mapHeight);
-  printPlayerCar(player, map);
-  printEnemyCars(enemies, map);
+  let map = generateMap(mapWidth, mapHeight);
   movePlayer(player);
   setInterval(() => {
+    console.clear();
+    map = generateMap(mapWidth, mapHeight);
+    printPlayerCar(player, map);
+    printEnemyCars(enemies, map);
     console.log(table(map));
   }, 1000);
 };
