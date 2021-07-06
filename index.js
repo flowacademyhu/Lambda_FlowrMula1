@@ -82,7 +82,6 @@ const movePlayer = (player) => {
       process.exit();
     }
   });
-  // console.log(player.coordinates);
 };
 
 const printGame = (player, enemies) => {
