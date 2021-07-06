@@ -71,15 +71,26 @@ const movePlayerHorizontally = (player, x) => {
     for (let i = 0; i < player.coordinates.length; i++) {
       player.coordinates[i].x -= 1;
     }
+  } else if (x === 1) {
+    for (const coordinate of player.coordinates) {
+      if (coordinate.x === mapWidth - 1) {
+        return;
+      }
+    }
+    for (let i = 0; i < player.coordinates.length; i++) {
+      player.coordinates[i].x += 1;
+    }
   }
 };
 
 const movePlayer = (player) => {
   stdin.on('data', (key) => {
-    if (key === 'a') {
-      movePlayerHorizontally(player, -1);
-    } else if (key === 'q') {
+    if (key === 'q') {
       process.exit();
+    } else if (key === 'a') {
+      movePlayerHorizontally(player, -1);
+    } else if (key === 'd') {
+      movePlayerHorizontally(player, 1);
     }
   });
 };
