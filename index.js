@@ -95,6 +95,12 @@ const movePlayer = (player) => {
   });
 };
 
+const moveEnemies = (enemies) => {
+  for (const enemy of enemies) {
+    moveEnemy(enemy);
+  }
+};
+
 const moveEnemy = (enemy) => {
   for (const coordinate of enemy.coordinates) {
     if (coordinate.y === mapHeight - 1) {
@@ -115,7 +121,7 @@ const printGame = (player, enemies) => {
     printPlayerCar(player, map);
     printEnemyCars(enemies, map);
     console.log(table(map));
-    moveEnemy(enemies[0]);
+    moveEnemies(enemies);
   }, 1000);
 };
 
