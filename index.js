@@ -75,19 +75,15 @@ const printEnemyCars = (enemies, map) => {
 
 const movePlayerHorizontally = (player, x) => {
   if (x === -1) {
-    for (const coordinate of player.coordinates) {
-      if (coordinate.x === 0) {
-        return;
-      }
+    if (player.coordinates[1].x === 0) {
+      return;
     }
     for (let i = 0; i < player.coordinates.length; i++) {
       player.coordinates[i].x -= 1;
     }
   } else if (x === 1) {
-    for (const coordinate of player.coordinates) {
-      if (coordinate.x === mapWidth - 1) {
-        return;
-      }
+    if (player.coordinates[3].x === mapWidth - 1) {
+      return;
     }
     for (let i = 0; i < player.coordinates.length; i++) {
       player.coordinates[i].x += 1;
@@ -140,10 +136,8 @@ const moveEnemies = (enemies) => {
 };
 
 const moveEnemy = (enemy) => {
-  for (const coordinate of enemy.coordinates) {
-    if (coordinate.y === mapHeight - 1) {
-      return;
-    }
+  if (enemy.coordinates[5].y === mapHeight - 1) {
+    return;
   }
   for (let i = 0; i < enemy.coordinates.length; i++) {
     enemy.coordinates[i].y += 1;
