@@ -4,21 +4,51 @@ stdin.setRawMode(true);
 stdin.resume();
 stdin.setEncoding('utf8');
 
-const mapWidth = 10;
+const mapWidth = 11;
 const mapHeight = 20;
 
-const player = {
-  coordinates: [
-    { x: 3, y: mapHeight - 8 },
-    { x: 2, y: mapHeight - 7 },
-    { x: 3, y: mapHeight - 7 },
-    { x: 4, y: mapHeight - 7 },
-    { x: 3, y: mapHeight - 6 },
-    { x: 2, y: mapHeight - 5 },
-    { x: 3, y: mapHeight - 5 },
-    { x: 4, y: mapHeight - 5 }
-  ]
+const generateCarPattern = (startingCoordinates) => {
+  const coordinates = [];
+  coordinates.push(startingCoordinates);
+  let obj = {};
+  obj.x = startingCoordinates.x - 1;
+  obj.y = startingCoordinates.y + 1;
+  coordinates.push(obj);
+  obj = {};
+  obj.x = startingCoordinates.x;
+  obj.y = startingCoordinates.y + 1;
+  coordinates.push(obj);
+  obj = {};
+  obj.x = startingCoordinates.x + 1;
+  obj.y = startingCoordinates.y + 1;
+  coordinates.push(obj);
+  obj = {};
+  obj.x = startingCoordinates.x;
+  obj.y = startingCoordinates.y + 2;
+  coordinates.push(obj);
+  obj = {};
+  obj.x = startingCoordinates.x - 1;
+  obj.y = startingCoordinates.y + 3;
+  coordinates.push(obj);
+  obj = {};
+  obj.x = startingCoordinates.x;
+  obj.y = startingCoordinates.y + 3;
+  coordinates.push(obj);
+  obj = {};
+  obj.x = startingCoordinates.x + 1;
+  obj.y = startingCoordinates.y + 3;
+  coordinates.push(obj);
+  return coordinates;
 };
+
+const player = {
+  coordinates: []
+};
+
+player.coordinates = generateCarPattern({
+  x: Math.floor(mapWidth / 2),
+  y: mapHeight - 8
+});
 
 const enemies = [
   {
