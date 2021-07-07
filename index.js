@@ -95,6 +95,14 @@ const movePlayerHorizontally = (player, x) => {
   }
 };
 
+const printGame = () => {
+  console.clear();
+  const map = generateMap(mapWidth, mapHeight);
+  printPlayerCar(player, map);
+  printEnemyCars(enemies, map);
+  console.log(table(map.slice(4, -4)));
+};
+
 const movePlayer = (player) => {
   stdin.on('data', (key) => {
     if (key === 'q') {
@@ -104,6 +112,7 @@ const movePlayer = (player) => {
     } else if (key === 'd') {
       movePlayerHorizontally(player, 1);
     }
+    printGame();
   });
 };
 
@@ -124,17 +133,12 @@ const moveEnemy = (enemy) => {
   }
 };
 
-const printGame = (player, enemies) => {
-  let map = generateMap(mapWidth, mapHeight);
+const startGame = (player, enemies) => {
   movePlayer(player);
   setInterval(() => {
-    console.clear();
-    map = generateMap(mapWidth, mapHeight);
-    printPlayerCar(player, map);
-    printEnemyCars(enemies, map);
-    console.log(table(map.slice(4, -4)));
+    printGame();
     moveEnemies(enemies);
   }, 1000);
 };
 
-printGame(player, enemies);
+startGame(player, enemies);
