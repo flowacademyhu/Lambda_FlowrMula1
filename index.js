@@ -101,6 +101,23 @@ const printGame = () => {
   printPlayerCar(player, map);
   printEnemyCars(enemies, map);
   console.log(table(map.slice(4, -4)));
+  checkCollision(player, enemies);
+};
+
+const checkCollision = (player, enemies) => {
+  for (const coordinate of player.coordinates) {
+    for (const enemy of enemies) {
+      for (const enemyCoordinate of enemy.coordinates) {
+        if (
+          coordinate.x === enemyCoordinate.x &&
+          coordinate.y === enemyCoordinate.y
+        ) {
+          console.log('Game Over!');
+          process.exit();
+        }
+      }
+    }
+  }
 };
 
 const movePlayer = (player) => {
