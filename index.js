@@ -6,6 +6,7 @@ stdin.setEncoding('utf8');
 
 const mapWidth = 11;
 const mapHeight = 20;
+let printGameInterval = 1000;
 
 const generateCarPattern = (startingCoordinates) => {
   const coordinates = [];
@@ -171,14 +172,26 @@ const moveEnemies = (enemies) => {
   }
 };
 
+const decreasePrintInterval = () => {
+  setInterval(() => {
+    if (printGameInterval > 250) {
+      printGameInterval -= 100;
+    }
+  }, 1000);
+};
+
+const runGame = () => {
+  printGame();
+  moveEnemies(enemies);
+  setTimeout(runGame, printGameInterval);
+};
+
 const startGame = (player, enemies) => {
   playerStartingPosition();
   addEnemy();
   movePlayer(player);
-  setInterval(() => {
-    printGame();
-    moveEnemies(enemies);
-  }, 1000);
+  decreasePrintInterval();
+  runGame();
 };
 
 startGame(player, enemies);
