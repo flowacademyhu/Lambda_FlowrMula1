@@ -52,38 +52,18 @@ const playerStartingPosition = () => {
   });
 };
 
-const enemies = [
-  {
-    coordinates: [
-      // { x: 1, y: 0 },
-      // { x: 0, y: 1 },
-      // { x: 1, y: 1 },
-      // { x: 2, y: 1 },
-      // { x: 1, y: 2 },
-      // { x: 0, y: 3 },
-      // { x: 1, y: 3 },
-      // { x: 2, y: 3 }
-    ]
-  }
-  // {
-  //   coordinates: [
-  //     { x: mapWidth - 2, y: 0 },
-  //     { x: mapWidth - 3, y: 1 },
-  //     { x: mapWidth - 2, y: 1 },
-  //     { x: mapWidth - 1, y: 1 },
-  //     { x: mapWidth - 2, y: 2 },
-  //     { x: mapWidth - 3, y: 3 },
-  //     { x: mapWidth - 2, y: 3 },
-  //     { x: mapWidth - 1, y: 3 }
-  //   ]
-  // }
-];
-const max = mapWidth - 2;
+const enemies = [];
+
 const generateRandomX = () => {
+  const max = mapWidth - 2;
   return Math.floor(Math.random() * (max - 1 + 1)) + 1;
 };
 
-enemies[0].coordinates = generateCarPattern({ x: generateRandomX(), y: 0 });
+const addEnemy = () => {
+  const enemy = {};
+  enemy.coordinates = generateCarPattern({ x: generateRandomX(), y: 0 });
+  enemies.push(enemy);
+};
 
 const generateMap = (width, height) => {
   const row = ' '.repeat(width).split('');
@@ -184,6 +164,7 @@ const moveEnemy = (enemy) => {
 
 const startGame = (player, enemies) => {
   playerStartingPosition();
+  addEnemy();
   movePlayer(player);
   setInterval(() => {
     printGame();
