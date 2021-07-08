@@ -72,6 +72,13 @@ const generateMap = (width, height) => {
   return map;
 };
 
+// const scores = () => {
+//   let scores = 0;
+//   if (isEnemyDown === true) {
+//     scores++;
+//   }
+// };
+
 const printCar = (car, map) => {
   for (const coord of car.coordinates) {
     map[coord.y][coord.x] = '*';
