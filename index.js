@@ -45,10 +45,12 @@ const player = {
   coordinates: []
 };
 
-player.coordinates = generateCarPattern({
-  x: Math.floor(mapWidth / 2),
-  y: mapHeight - 8
-});
+const playerStartingPosition = () => {
+  player.coordinates = generateCarPattern({
+    x: Math.floor(mapWidth / 2),
+    y: mapHeight - 8
+  });
+};
 
 const enemies = [
   {
@@ -181,6 +183,7 @@ const moveEnemy = (enemy) => {
 };
 
 const startGame = (player, enemies) => {
+  playerStartingPosition();
   movePlayer(player);
   setInterval(() => {
     printGame();
