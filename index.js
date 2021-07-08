@@ -145,18 +145,22 @@ const movePlayer = (player) => {
   });
 };
 
-const moveEnemies = (enemies) => {
-  for (const enemy of enemies) {
-    moveEnemy(enemy);
-  }
+const removeEnemy = (index) => {
+  enemies.splice(index, 1);
 };
 
-const moveEnemy = (enemy) => {
-  if (enemy.coordinates[5].y === mapHeight - 1) {
-    return;
+const isEnemyDown = (enemy) => enemy.coordinates[5].y === mapHeight - 1;
+
+const moveEnemies = (enemies) => {
+  for (const enemy of enemies) {
+    for (let i = 0; i < enemy.coordinates.length; i++) {
+      enemy.coordinates[i].y += 1;
+    }
   }
-  for (let i = 0; i < enemy.coordinates.length; i++) {
-    enemy.coordinates[i].y += 1;
+  for (let i = 0; i < enemies.length; i++) {
+    if (isEnemyDown(enemies[i])) {
+      removeEnemy(i);
+    }
   }
 };
 
