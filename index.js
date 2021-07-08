@@ -41,9 +41,7 @@ const generateCarPattern = (startingCoordinates) => {
   return coordinates;
 };
 
-const player = {
-  coordinates: []
-};
+const player = {};
 
 const playerStartingPosition = () => {
   player.coordinates = generateCarPattern({
