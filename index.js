@@ -118,6 +118,24 @@ const movePlayerHorizontally = (player, x) => {
   }
 };
 
+const movePlayerVertically = (player, y) => {
+  if (y === -1) {
+    if (player.coordinates[1].y === 5) {
+      return;
+    }
+    for (let i = 0; i < player.coordinates.length; i++) {
+      player.coordinates[i].y -= 1;
+    }
+  } else if (y === 1) {
+    if (player.coordinates[3].y === mapHeight - 7) {
+      return;
+    }
+    for (let i = 0; i < player.coordinates.length; i++) {
+      player.coordinates[i].y += 1;
+    }
+  }
+};
+
 const printGame = () => {
   console.clear();
   const map = generateMap(mapWidth, mapHeight);
@@ -151,6 +169,10 @@ const movePlayer = (player) => {
       movePlayerHorizontally(player, -1);
     } else if (key === 'd') {
       movePlayerHorizontally(player, 1);
+    } else if (key === 'w') {
+      movePlayerVertically(player, -1);
+    } else if (key === 's') {
+      movePlayerVertically(player, 1);
     }
     printGame();
   });
