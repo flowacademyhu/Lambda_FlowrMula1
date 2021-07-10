@@ -7,7 +7,6 @@ stdin.setEncoding('utf8');
 const mapWidth = 11;
 const mapHeight = 20;
 let printGameInterval = 1000;
-let addEnemyInterval;
 
 const generateCarPattern = (startingCoordinates) => {
   const coordinates = [];
@@ -44,6 +43,7 @@ const generateCarPattern = (startingCoordinates) => {
 };
 
 const player = {};
+const enemies = [];
 
 const playerStartingPosition = () => {
   player.coordinates = generateCarPattern({
@@ -51,8 +51,6 @@ const playerStartingPosition = () => {
     y: mapHeight - 8
   });
 };
-
-const enemies = [];
 
 const generateRandomX = () => {
   const max = mapWidth - 2;
@@ -63,8 +61,6 @@ const addEnemy = () => {
   const enemy = {};
   enemy.coordinates = generateCarPattern({ x: generateRandomX(), y: 0 });
   enemies.push(enemy);
-  addEnemyInterval = printGameInterval * 12;
-  setTimeout(addEnemy, addEnemyInterval);
 };
 
 const generateMap = (width, height) => {
@@ -197,26 +193,24 @@ const moveEnemies = (enemies) => {
   }
 };
 
-const decreasePrintInterval = () => {
-  setInterval(() => {
-    if (printGameInterval > 200) {
-      printGameInterval -= 100;
-    }
-  }, 3000);
-};
-
 const runGame = () => {
-  printGame();
-  moveEnemies(enemies);
-  setTimeout(runGame, printGameInterval);
+  let step = 0;
+  addEnemy();
+  setInterval(() => {
+    printGame();
+    moveEnemies(enemies);
+    step++;
+    if (step > mapHeight * 0.45) {
+      addEnemy();
+      step = 0;
+    }
+  }, printGameInterval);
 };
 
 const startGame = (player, enemies) => {
   playerStartingPosition();
   movePlayer(player);
-  decreasePrintInterval();
   runGame();
-  addEnemy();
 };
 
 startGame(player, enemies);
