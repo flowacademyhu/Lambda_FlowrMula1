@@ -6,7 +6,9 @@ stdin.setEncoding('utf8');
 
 const mapWidth = 11;
 const mapHeight = 20;
-let printGameInterval = 1000;
+let printGameInterval;
+let intervalId;
+let step;
 let score;
 
 const generateCarPattern = (startingCoordinates) => {
@@ -133,7 +135,8 @@ const printGame = () => {
   printEnemyCars(enemies, map);
   console.log(table(map.slice(4, -4)));
   console.log('Score:', score.toString().padStart('3', ' '));
-  checkCollision(player, enemies);
+  console.log('Interval:', printGameInterval);
+  // checkCollision(player, enemies);
 };
 
 const checkCollision = (player, enemies) => {
@@ -190,24 +193,27 @@ const moveEnemies = (enemies) => {
 };
 
 const runGame = () => {
-  let step = 0;
-  addEnemy();
-  setInterval(() => {
-    printGame();
-    moveEnemies(enemies);
-    step++;
-    if (step > mapHeight * 0.45) {
-      addEnemy();
-      step = 0;
-    }
-  }, printGameInterval);
+  printGame();
+  moveEnemies(enemies);
+  checkCollision(player, enemies);
+  step++;
+  if (enemies.length === 0 || step > mapHeight * 0.45) {
+    addEnemy();
+    step = 0;
+  }
+  // if (score > 0 && score % 3 === 0 && printGameInterval > 300) {
+  //   printGameInterval -= 100;
+  //   clearInterval(intervalId);
+  //   intervalId = setInterval(runGame, printGameInterval);
+  // }
 };
 
 const startGame = (player, enemies) => {
+  printGameInterval = 550;
   score = 0;
   playerStartingPosition();
   movePlayer(player);
-  runGame();
+  intervalId = setInterval(runGame, printGameInterval);
 };
 
 startGame(player, enemies);
