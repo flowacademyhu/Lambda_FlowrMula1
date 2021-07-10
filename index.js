@@ -7,6 +7,7 @@ stdin.setEncoding('utf8');
 const mapWidth = 11;
 const mapHeight = 20;
 let printGameInterval = 1000;
+let score;
 
 const generateCarPattern = (startingCoordinates) => {
   const coordinates = [];
@@ -72,13 +73,6 @@ const generateMap = (width, height) => {
   return map;
 };
 
-// const scores = () => {
-//   let scores = 0;
-//   if (isEnemyDown === true) {
-//     scores++;
-//   }
-// };
-
 const printCar = (car, map) => {
   for (const coord of car.coordinates) {
     map[coord.y][coord.x] = '*';
@@ -138,6 +132,7 @@ const printGame = () => {
   printPlayerCar(player, map);
   printEnemyCars(enemies, map);
   console.log(table(map.slice(4, -4)));
+  console.log('Score:', score.toString().padStart('3', ' '));
   checkCollision(player, enemies);
 };
 
@@ -189,6 +184,7 @@ const moveEnemies = (enemies) => {
   for (let i = 0; i < enemies.length; i++) {
     if (isEnemyDown(enemies[i])) {
       removeEnemy(i);
+      score++;
     }
   }
 };
@@ -208,6 +204,7 @@ const runGame = () => {
 };
 
 const startGame = (player, enemies) => {
+  score = 0;
   playerStartingPosition();
   movePlayer(player);
   runGame();
