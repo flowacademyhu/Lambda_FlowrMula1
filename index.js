@@ -141,12 +141,12 @@ const printGame = () => {
 };
 
 const checkCollision = (player, enemies) => {
-  for (const coordinate of player.coordinates) {
+  for (const playerCoordinate of player.coordinates) {
     for (const enemy of enemies) {
       for (const enemyCoordinate of enemy.coordinates) {
         if (
-          coordinate.x === enemyCoordinate.x &&
-          coordinate.y === enemyCoordinate.y
+          playerCoordinate.x === enemyCoordinate.x &&
+          playerCoordinate.y === enemyCoordinate.y
         ) {
           console.log('Game Over!');
           process.exit();
