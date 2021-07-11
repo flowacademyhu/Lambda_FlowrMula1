@@ -6,6 +6,7 @@ stdin.setEncoding('utf8');
 
 const mapWidth = 11;
 const mapHeight = 20;
+const defaultPrintGameInterval = 700;
 let printGameInterval;
 let intervalId;
 let step;
@@ -213,7 +214,7 @@ const runGame = () => {
 };
 
 const startGame = (player, enemies) => {
-  printGameInterval = 550;
+  printGameInterval = defaultPrintGameInterval;
   score = 0;
   step = 0;
   playerStartingPosition();
