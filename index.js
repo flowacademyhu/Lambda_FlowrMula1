@@ -135,7 +135,7 @@ const printGame = () => {
   printEnemyCars(enemies, map);
   console.log(table(map.slice(4, -4)));
   console.log('Score:', score.toString().padStart('3', ' '));
-  console.log('Interval:', printGameInterval);
+  console.log('Step:', step, 'Interval:', printGameInterval);
   // checkCollision(player, enemies);
 };
 
@@ -197,11 +197,15 @@ const runGame = () => {
   moveEnemies(enemies);
   checkCollision(player, enemies);
   step++;
-  if (enemies.length === 0 || step > mapHeight * 0.45) {
+  if (enemies.length === 0 || step % Math.round(mapHeight * 0.5) === 0) {
     addEnemy();
-    step = 0;
   }
-  // if (score > 0 && score % 3 === 0 && printGameInterval > 300) {
+  if (step > 0 && step % 20 === 0 && printGameInterval > 300) {
+    printGameInterval -= 100;
+    clearInterval(intervalId);
+    intervalId = setInterval(runGame, printGameInterval);
+  }
+  // if (score > 1 && score % 3 === 0 && printGameInterval > 300) {
   //   printGameInterval -= 100;
   //   clearInterval(intervalId);
   //   intervalId = setInterval(runGame, printGameInterval);
@@ -211,6 +215,7 @@ const runGame = () => {
 const startGame = (player, enemies) => {
   printGameInterval = 550;
   score = 0;
+  step = 0;
   playerStartingPosition();
   movePlayer(player);
   intervalId = setInterval(runGame, printGameInterval);
