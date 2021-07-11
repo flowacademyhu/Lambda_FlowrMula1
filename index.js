@@ -7,6 +7,10 @@ stdin.setEncoding('utf8');
 const mapWidth = 11;
 const mapHeight = 20;
 const defaultPrintGameInterval = 700;
+const reduceIntervalBy = 100;
+const minimumInterval = 200;
+const reduceIntervalAtStep = 20;
+const addEnemyFrequencyPercent = 0.5;
 let printGameInterval;
 let intervalId;
 let step;
@@ -198,19 +202,21 @@ const runGame = () => {
   moveEnemies(enemies);
   checkCollision(player, enemies);
   step++;
-  if (enemies.length === 0 || step % Math.round(mapHeight * 0.5) === 0) {
+  if (
+    enemies.length === 0 ||
+    step % Math.round(mapHeight * addEnemyFrequencyPercent) === 0
+  ) {
     addEnemy();
   }
-  if (step > 0 && step % 20 === 0 && printGameInterval > 300) {
-    printGameInterval -= 100;
+  if (
+    step > 0 &&
+    step % reduceIntervalAtStep === 0 &&
+    printGameInterval >= minimumInterval + reduceIntervalBy
+  ) {
+    printGameInterval -= reduceIntervalBy;
     clearInterval(intervalId);
     intervalId = setInterval(runGame, printGameInterval);
   }
-  // if (score > 1 && score % 3 === 0 && printGameInterval > 300) {
-  //   printGameInterval -= 100;
-  //   clearInterval(intervalId);
-  //   intervalId = setInterval(runGame, printGameInterval);
-  // }
 };
 
 const startGame = (player, enemies) => {
