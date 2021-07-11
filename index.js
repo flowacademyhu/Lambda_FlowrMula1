@@ -11,6 +11,7 @@ const reduceIntervalBy = 100;
 const minimumInterval = 200;
 const reduceIntervalAtStep = 20;
 const addEnemyFrequencyPercent = 0.5;
+const carHeight = 4;
 let printGameInterval;
 let intervalId;
 let step;
@@ -138,10 +139,9 @@ const printGame = () => {
   const map = generateMap(mapWidth, mapHeight);
   printPlayerCar(player, map);
   printEnemyCars(enemies, map);
-  console.log(table(map.slice(4, -4)));
+  console.log(table(map.slice(carHeight, -carHeight)));
   console.log('Score:', score.toString().padStart('3', ' '));
   console.log('Step:', step, 'Interval:', printGameInterval);
-  // checkCollision(player, enemies);
 };
 
 const checkCollision = (player, enemies) => {
