@@ -102,10 +102,9 @@ const generateMap = (width, height) => {
 };
 
 const printCar = (car, map) => {
-  for (const coord of car.coordinates) {
-    map[coord.y][coord.x] = '*';
+  for (const coordinate of car.coordinates) {
+    map[coordinate.y][coordinate.x] = coordinate;
   }
-  return map;
 };
 
 const printPlayerCar = (player, map) => {
