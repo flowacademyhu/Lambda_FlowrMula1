@@ -8,6 +8,7 @@ const addName = () => {
   );
 
   term.inputField(function (_error, input) {
+    index.player.name = input;
     index.startGame();
   });
 };
