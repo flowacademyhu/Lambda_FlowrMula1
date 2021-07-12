@@ -3,7 +3,9 @@ const ctx = require('axel');
 const index = require('./index');
 const colorPicking = require('./colorPicking');
 
-term.red('Welcome to Flowrmula 1!\n Buckle in!\n');
+console.clear();
+
+term.red('Welcome to Flowrmula 1!\nBuckle in!\n');
 
 const items = ['New game', 'High score', 'Exit'];
 
