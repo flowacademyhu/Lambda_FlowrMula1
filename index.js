@@ -1,3 +1,4 @@
+const axel = require('axel');
 const table = require('table').table;
 const stdin = process.stdin;
 stdin.setRawMode(true);
@@ -144,6 +145,22 @@ const printGame = () => {
   console.log('Step:', step, 'Interval:', printGameInterval);
 };
 
+const printGameAxel = () => {
+  axel.clear();
+  let map = generateMap(mapWidth, mapHeight);
+  printPlayerCar(player, map);
+  printEnemyCars(enemies, map);
+  map = map.slice(carHeight, -carHeight);
+  for (let i = 0; i < map.length; i++) {
+    for (let j = 0; j < map[i].length; j++) {
+      axel.bg(211, 211, 211); // lightgray
+      axel.fg(255, 0, 0); // red
+      axel.text(j + 1, i + 1, map[i][j]);
+    }
+  }
+  axel.cursor.restore();
+};
+
 const checkCollision = (player, enemies) => {
   for (const playerCoordinate of player.coordinates) {
     for (const enemy of enemies) {
@@ -173,7 +190,8 @@ const movePlayer = (player) => {
     } else if (key === 's') {
       movePlayerVertically(player, 1);
     }
-    printGame();
+    // printGame();
+    printGameAxel();
   });
 };
 
@@ -198,7 +216,8 @@ const moveEnemies = (enemies) => {
 };
 
 const runGame = () => {
-  printGame();
+  // printGame();
+  printGameAxel();
   moveEnemies(enemies);
   checkCollision(player, enemies);
   step++;
