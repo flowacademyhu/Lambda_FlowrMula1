@@ -94,8 +94,6 @@ const generateRandomX = () => {
 const getRandomCarColor = (carColors) => {
   const keys = Object.keys(carColors);
   const randomIndex = Math.floor(Math.random() * keys.length);
-  // const color = keys[randomIndex];
-  // return carColors[color];
   return keys[randomIndex];
 };
 
