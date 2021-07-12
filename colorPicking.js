@@ -21,5 +21,3 @@ const colorPicking = () => {
 };
 
 exports.colorPicking = colorPicking;
-
-// const colorPicking =
