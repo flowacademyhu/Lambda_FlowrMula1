@@ -14,7 +14,16 @@ const addEnemyFrequencyPercent = 0.5;
 const carHeight = 4;
 const mapColor = [211, 211, 211]; // lightgray
 const tireColor = [0, 0, 0]; // black
-const carColors = { red: [255, 0, 0], green: [0, 255, 0], blue: [0, 0, 255] };
+const carColors = {
+  red: [255, 0, 0],
+  green: [0, 255, 0],
+  blue: [0, 0, 255],
+  gold: [255, 215, 0],
+  orange: [255, 165, 0],
+  purple: [128, 0, 128],
+  yellow: [255, 255, 0],
+  pink: [255, 192, 203]
+};
 const carCharacter = '*';
 let printGameInterval;
 let intervalId;
