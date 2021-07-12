@@ -159,6 +159,16 @@ const printGameAxel = () => {
     }
   }
   axel.cursor.restore();
+  axel.bg(0, 0, 0); // lightgray
+  axel.fg(255, 0, 0); // red
+  axel.text(
+    0,
+    mapHeight - carHeight * 2 + 1,
+    'Score:  ' + score.toString().padStart('3', ' ')
+  );
+  axel.text(0, mapHeight - carHeight * 2 + 2, 'Step: ' + step);
+  axel.text(0, mapHeight - carHeight * 2 + 3, 'Interval: ' + printGameInterval);
+  axel.cursor.restore();
 };
 
 const checkCollision = (player, enemies) => {
