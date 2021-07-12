@@ -14,42 +14,51 @@ const reduceIntervalAtStep = 20;
 const addEnemyFrequencyPercent = 0.5;
 const carHeight = 4;
 const mapColor = [211, 211, 211]; // lightgray
+const tireColor = [0, 0, 0]; // black
 const carColors = { red: [255, 0, 0], green: [0, 255, 0], blue: [0, 0, 255] };
 let printGameInterval;
 let intervalId;
 let step;
 let score;
 
-const generateCarPattern = (startingCoordinates) => {
+const generateCarPattern = (car, startingCoordinates) => {
   const coordinates = [];
-  coordinates.push(startingCoordinates);
-  let obj = {};
+  startingCoordinates.color = car.color;
+  coordinates.push(startingCoordinates); // nose
+  let obj = {}; // tire front left
   obj.x = startingCoordinates.x - 1;
   obj.y = startingCoordinates.y + 1;
+  obj.color = tireColor;
   coordinates.push(obj);
-  obj = {};
+  obj = {}; // body front
   obj.x = startingCoordinates.x;
   obj.y = startingCoordinates.y + 1;
+  obj.color = car.color;
   coordinates.push(obj);
-  obj = {};
+  obj = {}; // tire front right
   obj.x = startingCoordinates.x + 1;
   obj.y = startingCoordinates.y + 1;
+  obj.color = tireColor;
   coordinates.push(obj);
-  obj = {};
+  obj = {}; // body middle
   obj.x = startingCoordinates.x;
   obj.y = startingCoordinates.y + 2;
+  obj.color = car.color;
   coordinates.push(obj);
-  obj = {};
+  obj = {}; // tire rear left
   obj.x = startingCoordinates.x - 1;
   obj.y = startingCoordinates.y + 3;
+  obj.color = tireColor;
   coordinates.push(obj);
-  obj = {};
+  obj = {}; // body rear
   obj.x = startingCoordinates.x;
   obj.y = startingCoordinates.y + 3;
+  obj.color = car.color;
   coordinates.push(obj);
-  obj = {};
+  obj = {}; // tire rear right
   obj.x = startingCoordinates.x + 1;
   obj.y = startingCoordinates.y + 3;
+  obj.color = tireColor;
   coordinates.push(obj);
   return coordinates;
 };
@@ -58,7 +67,7 @@ const player = {};
 const enemies = [];
 
 const playerStartingPosition = () => {
-  player.coordinates = generateCarPattern({
+  generateCarPattern(player, {
     x: Math.floor(mapWidth / 2),
     y: mapHeight - 8
   });
@@ -78,8 +87,8 @@ const generateRandomX = () => {
 
 const addEnemy = () => {
   const enemy = {};
-  enemy.coordinates = generateCarPattern({ x: generateRandomX(), y: 0 });
   setCarColor(enemy, 'red');
+  generateCarPattern(enemy, { x: generateRandomX(), y: 0 });
   enemies.push(enemy);
 };
 
@@ -262,8 +271,8 @@ const startGame = (player, enemies) => {
   printGameInterval = defaultPrintGameInterval;
   score = 0;
   step = 0;
-  playerStartingPosition();
   setCarColor(player, 'blue');
+  playerStartingPosition();
   movePlayer(player);
   intervalId = setInterval(runGame, printGameInterval);
 };
