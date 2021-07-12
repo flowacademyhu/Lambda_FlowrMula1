@@ -60,7 +60,7 @@ const generateCarPattern = (car, startingCoordinates) => {
   obj.y = startingCoordinates.y + 3;
   obj.color = tireColor;
   coordinates.push(obj);
-  return coordinates;
+  car.coordinates = coordinates;
 };
 
 const player = {};
