@@ -1,5 +1,5 @@
 const term = require('terminal-kit').terminal;
-const index = require('./index');
+const addName = require('./addName');
 
 const colorPicking = () => {
   console.clear();
@@ -9,13 +9,13 @@ const colorPicking = () => {
 
   term.singleColumnMenu(items, function (_error, response) {
     if (response.selectedText === 'Red') {
-      index.startGame();
+      addName.addName();
     }
     if (response.selectedText === 'Blue') {
-      index.startGame();
+      addName.addName();
     }
     if (response.selectedText === 'Green') {
-      index.startGame();
+      addName.addName();
     }
   });
 };
