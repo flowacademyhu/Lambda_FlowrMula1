@@ -228,8 +228,8 @@ const moveEnemies = (enemies) => {
 
 const runGame = () => {
   // printGame();
-  printGameAxel();
   moveEnemies(enemies);
+  printGameAxel();
   checkCollision(player, enemies);
   step++;
   if (
