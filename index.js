@@ -166,10 +166,9 @@ const printGame = () => {
 
 const printGameAxel = () => {
   axel.clear();
-  let map = generateMap(mapWidth, mapHeight);
+  const map = generateMap(mapWidth, mapHeight);
   printPlayerCar(player, map);
   printEnemyCars(enemies, map);
-  map = map.slice(carHeight, -carHeight);
   for (let i = 0; i < map.length; i++) {
     for (let j = 0; j < map[i].length; j++) {
       axel.bg(...mapColor);
