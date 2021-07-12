@@ -230,4 +230,4 @@ const startGame = () => {
 
 // startGame(player, enemies);
 
-exports.startGame = startGame;
+module.exports = { startGame, player };
