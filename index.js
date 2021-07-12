@@ -74,9 +74,9 @@ const playerStartingPosition = () => {
 };
 
 const setCarColor = (car, colorName) => {
-  if (!carColors[colorName]) {
-    colorName = 'red';
-  }
+  // if (!carColors[colorName]) {
+  //   colorName = 'red';
+  // }
   car.color = carColors[colorName];
 };
 
@@ -85,9 +85,19 @@ const generateRandomX = () => {
   return Math.floor(Math.random() * (max - 1 + 1)) + 1;
 };
 
+const getRandomCarColor = (carColors) => {
+  const keys = Object.keys(carColors);
+  const randomIndex = Math.floor(Math.random() * keys.length);
+  // const color = keys[randomIndex];
+  // return carColors[color];
+  return keys[randomIndex];
+};
+
 const addEnemy = () => {
   const enemy = {};
-  setCarColor(enemy, 'red');
+  do {
+    setCarColor(enemy, getRandomCarColor(carColors));
+  } while (enemy.color === player.color);
   generateCarPattern(enemy, { x: generateRandomX(), y: 0 });
   enemies.push(enemy);
 };
