@@ -1,6 +1,4 @@
 const term = require('terminal-kit').terminal;
-const ctx = require('axel');
-const index = require('./index');
 const colorPicking = require('./colorPicking');
 
 console.clear();
