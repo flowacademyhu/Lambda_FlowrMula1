@@ -6,6 +6,6 @@ const writeScores = (name, score) => {
   }
 };
 
-module.exports{
-  writeScores()
-}
+module.exports = {
+  writeScores
+};
