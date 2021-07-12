@@ -14,6 +14,7 @@ const reduceIntervalAtStep = 20;
 const addEnemyFrequencyPercent = 0.5;
 const carHeight = 4;
 const mapColor = [211, 211, 211]; // lightgray
+const carColors = { red: [255, 0, 0], green: [0, 255, 0], blue: [0, 0, 255] };
 let printGameInterval;
 let intervalId;
 let step;
