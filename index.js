@@ -63,6 +63,10 @@ const playerStartingPosition = () => {
   });
 };
 
+const setCarColor = (car, colorArr) => {
+  car.color = colorArr;
+};
+
 const generateRandomX = () => {
   const max = mapWidth - 2;
   return Math.floor(Math.random() * (max - 1 + 1)) + 1;
