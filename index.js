@@ -1,5 +1,4 @@
 const axel = require('axel');
-const table = require('table').table;
 const stdin = process.stdin;
 stdin.setRawMode(true);
 stdin.resume();
@@ -154,16 +153,6 @@ const movePlayerVertically = (player, y) => {
   }
 };
 
-const printGame = () => {
-  console.clear();
-  const map = generateMap(mapWidth, mapHeight);
-  printPlayerCar(player, map);
-  printEnemyCars(enemies, map);
-  console.log(table(map.slice(carHeight, -carHeight)));
-  console.log('Score:', score.toString().padStart('3', ' '));
-  console.log('Step:', step, 'Interval:', printGameInterval);
-};
-
 const printGameAxel = () => {
   axel.clear();
   const map = generateMap(mapWidth, mapHeight);
@@ -222,7 +211,6 @@ const movePlayer = (player) => {
     } else if (key === 's') {
       movePlayerVertically(player, 1);
     }
-    // printGame();
     printGameAxel();
   });
 };
@@ -248,7 +236,6 @@ const moveEnemies = (enemies) => {
 };
 
 const runGame = () => {
-  // printGame();
   moveEnemies(enemies);
   printGameAxel();
   checkCollision(player, enemies);
