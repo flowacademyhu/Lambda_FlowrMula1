@@ -76,6 +76,7 @@ const generateRandomX = () => {
 const addEnemy = () => {
   const enemy = {};
   enemy.coordinates = generateCarPattern({ x: generateRandomX(), y: 0 });
+  enemy.color = carColors.red;
   enemies.push(enemy);
 };
 
@@ -259,6 +260,7 @@ const startGame = (player, enemies) => {
   score = 0;
   step = 0;
   playerStartingPosition();
+  setCarColor(player, carColors.green);
   movePlayer(player);
   intervalId = setInterval(runGame, printGameInterval);
 };
