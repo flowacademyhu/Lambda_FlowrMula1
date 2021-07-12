@@ -64,8 +64,11 @@ const playerStartingPosition = () => {
   });
 };
 
-const setCarColor = (car, colorArr) => {
-  car.color = colorArr;
+const setCarColor = (car, colorName) => {
+  if (!carColors[colorName]) {
+    colorName = 'red';
+  }
+  car.color = carColors[colorName];
 };
 
 const generateRandomX = () => {
@@ -76,7 +79,7 @@ const generateRandomX = () => {
 const addEnemy = () => {
   const enemy = {};
   enemy.coordinates = generateCarPattern({ x: generateRandomX(), y: 0 });
-  enemy.color = carColors.red;
+  setCarColor(enemy, 'red');
   enemies.push(enemy);
 };
 
@@ -260,7 +263,7 @@ const startGame = (player, enemies) => {
   score = 0;
   step = 0;
   playerStartingPosition();
-  setCarColor(player, carColors.green);
+  setCarColor(player, 'blue');
   movePlayer(player);
   intervalId = setInterval(runGame, printGameInterval);
 };
