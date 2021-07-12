@@ -83,9 +83,6 @@ const playerStartingPosition = () => {
 };
 
 const setCarColor = (car, colorName) => {
-  // if (!carColors[colorName]) {
-  //   colorName = 'red';
-  // }
   car.color = carColors[colorName];
 };
 
