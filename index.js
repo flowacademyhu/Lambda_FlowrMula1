@@ -16,6 +16,7 @@ const carHeight = 4;
 const mapColor = [211, 211, 211]; // lightgray
 const tireColor = [0, 0, 0]; // black
 const carColors = { red: [255, 0, 0], green: [0, 255, 0], blue: [0, 0, 255] };
+const carCharacter = '*';
 let printGameInterval;
 let intervalId;
 let step;
@@ -168,11 +169,15 @@ const printGameAxel = () => {
   const map = generateMap(mapWidth, mapHeight);
   printPlayerCar(player, map);
   printEnemyCars(enemies, map);
-  for (let i = 0; i < map.length; i++) {
+  for (let i = carHeight; i < map.length - carHeight; i++) {
     for (let j = 0; j < map[i].length; j++) {
       axel.bg(...mapColor);
-      axel.fg(255, 0, 0); // red
-      axel.text(j + 1, i + 1, map[i][j]);
+      if (typeof map[i][j] === 'object') {
+        axel.fg(...map[i][j].color);
+        axel.text(j + 1, i + 1 - carHeight, carCharacter);
+      } else {
+        axel.text(j + 1, i + 1 - carHeight, map[i][j]);
+      }
     }
   }
   axel.cursor.restore();
