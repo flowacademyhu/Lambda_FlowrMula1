@@ -13,6 +13,7 @@ const minimumInterval = 200;
 const reduceIntervalAtStep = 20;
 const addEnemyFrequencyPercent = 0.5;
 const carHeight = 4;
+const mapColor = [211, 211, 211]; // lightgray
 let printGameInterval;
 let intervalId;
 let step;
@@ -153,7 +154,7 @@ const printGameAxel = () => {
   map = map.slice(carHeight, -carHeight);
   for (let i = 0; i < map.length; i++) {
     for (let j = 0; j < map[i].length; j++) {
-      axel.bg(211, 211, 211); // lightgray
+      axel.bg(...mapColor);
       axel.fg(255, 0, 0); // red
       axel.text(j + 1, i + 1, map[i][j]);
     }
