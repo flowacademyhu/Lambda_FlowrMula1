@@ -206,7 +206,7 @@ const printScoreAxel = () => {
   );
 };
 
-const printMapBorder = (i, j) => {
+const printMapBorderAxel = (i, j) => {
   const onLineEnd = j === mapWidth - 1;
   axel.bg(255, 255, 255);
   axel.fg(...carColors.red);
@@ -221,7 +221,7 @@ const printGameAxel = () => {
   for (let i = carHeight; i < map.length - carHeight; i++) {
     for (let j = 0; j < map[i].length; j++) {
       if (j === 0 || j === mapWidth - 1) {
-        printMapBorder(i, j);
+        printMapBorderAxel(i, j);
       }
       axel.bg(...mapColor);
       if (typeof map[i][j] === 'object') {
