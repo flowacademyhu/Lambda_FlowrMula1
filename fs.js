@@ -18,35 +18,32 @@ array = array.map((elem) => [elem[0], Number(elem[1])]);
 array = array.sort((a, b) => b[1] - a[1]);
 array = array.slice(0, 5);
 
-// console.log(cfonts "Leaderboard" --font "chrome");
-
-// terminalKit.table(array, {
-//   hasBorder: true,
-//   contentHasMarkup: true,
-//   borderChars: 'heavyRounded',
-//   borderAttr: { color: 'white' },
-//   textAttr: { bgColor: 'default' },
-//   firstCellTextAttr: { bgColor: 'black' },
-//   firstRowTextAttr: { bgColor: 'black' },
-//   firstColumnTextAttr: { bgColor: 'black' },
-//   secondColumnTextAttr: { bgColor: 'red' },
-//   width: 18,
-//   lineWrap: false,
-//   fit: true
-// });
-
 Cfonts.say('Leaderboard', {
   font: 'tiny',
+  font: 'block',
   align: 'center',
-  letterSpacing: 3,
+  //   letterSpacing: ,
   colors: ['yellow', 'black']
 });
 
 Cfonts.say(
-  `${array[0]}\n ${array[1]}\n ${array[2]}\n ${array[3]}\n ${array[4]}`,
+  ` ${array[0]}\n  ${array[1]}\n  ${array[2]}\n  ${array[3]}\n ${array[4]}`,
   {
     font: 'tiny',
     align: 'center',
     colors: ['red', 'black']
   }
 );
+
+// term.grabInput({ mouse: 'button' });
+
+// term.on('key', function (name) {
+//   if (name === 'ENTER') {
+//     menu.menu();
+//   }
+// });
+// term.on('key', function (name) {
+//   if (name === 'ENTER') {
+//     menu.menu();
+//   }
+// });
