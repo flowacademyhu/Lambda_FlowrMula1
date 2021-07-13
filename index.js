@@ -1,3 +1,4 @@
+// ≣
 const axel = require('axel');
 const stdin = process.stdin;
 stdin.setRawMode(true);
@@ -13,6 +14,7 @@ const reduceIntervalAtStep = 20;
 const addEnemyFrequencyPercent = 0.5;
 const carHeight = 4;
 const mapColor = [211, 211, 211]; // lightgray
+const mapTextureColor = [175, 175, 175];
 const tireColor = [0, 0, 0]; // black
 const cockpitColor = [47, 79, 79]; // darkslategray
 const carColors = {
@@ -133,7 +135,7 @@ const addEnemy = () => {
 };
 
 const generateMap = (width, height) => {
-  const row = ' '.repeat(width).split('');
+  const row = '⋮'.repeat(width).split('');
   const map = [];
   for (let i = 0; i < height; i++) {
     map.push([...row]);
@@ -219,6 +221,7 @@ const printGameAxel = () => {
         }
         axel.text(j + 1, i + 1 - carHeight, map[i][j].character);
       } else {
+        axel.fg(...mapTextureColor);
         axel.text(j + 1, i + 1 - carHeight, map[i][j]);
       }
     }
