@@ -29,6 +29,7 @@ const tireCharacter = '◼';
 const bodyCharacter = '█';
 const noseCharacter = '▲';
 const driverCharacter = '◉';
+const scoreText = 'Score:';
 let printGameInterval;
 let intervalId;
 let step;
@@ -192,6 +193,17 @@ const movePlayerVertically = (player, y) => {
   }
 };
 
+const printScoreAxel = () => {
+  axel.cursor.restore();
+  axel.bg(0, 0, 0); // black
+  axel.fg(255, 0, 0); // red
+  axel.text(
+    0,
+    mapHeight - carHeight * 2 + 1,
+    scoreText + score.toString().padStart(mapWidth - scoreText.length, ' ')
+  );
+};
+
 const printGameAxel = () => {
   axel.clear();
   const map = generateMap(mapWidth, mapHeight);
@@ -211,14 +223,7 @@ const printGameAxel = () => {
       }
     }
   }
-  axel.cursor.restore();
-  axel.bg(0, 0, 0); // lightgray
-  axel.fg(255, 0, 0); // red
-  axel.text(
-    0,
-    mapHeight - carHeight * 2 + 1,
-    'Score:  ' + score.toString().padStart('3', ' ')
-  );
+  printScoreAxel();
   axel.text(0, mapHeight - carHeight * 2 + 2, 'Step: ' + step);
   axel.text(0, mapHeight - carHeight * 2 + 3, 'Interval: ' + printGameInterval);
   axel.cursor.restore();
