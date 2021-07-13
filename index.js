@@ -5,12 +5,12 @@ stdin.resume();
 stdin.setEncoding('utf8');
 
 const mapWidth = 11;
-const mapHeight = 20;
-const defaultPrintGameInterval = 700;
+const mapHeight = 25;
+const defaultPrintGameInterval = 530;
 const reduceIntervalBy = 100;
-const minimumInterval = 200;
-const reduceIntervalAtStep = 20;
-const addEnemyFrequencyPercent = 0.5;
+const minimumInterval = 130;
+const reduceIntervalAtStep = 25;
+const addEnemyFrequencyPercent = 0.35;
 const carHeight = 4;
 const mapColor = [211, 211, 211]; // lightgray
 const mapTextureColor = [175, 175, 175];
