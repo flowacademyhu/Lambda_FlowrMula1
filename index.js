@@ -202,7 +202,7 @@ const printScoreAxel = () => {
   axel.text(
     0,
     mapHeight - carHeight * 2 + 1,
-    scoreText + score.toString().padStart(mapWidth + 2 - scoreText.length, ' ')
+    scoreText + score.toString().padStart(mapWidth + 8 - scoreText.length, ' ')
   );
 };
 
@@ -210,7 +210,16 @@ const printMapBorderAxel = (i, j) => {
   const onLineEnd = j === mapWidth - 1;
   axel.bg(255, 255, 255);
   axel.fg(...carColors.red);
-  axel.text(j + 1 + (onLineEnd ? 2 : 0), i + 1 - carHeight, mapBorderCharacter);
+  axel.text(j + 4 + (onLineEnd ? 2 : 0), i + 1 - carHeight, mapBorderCharacter);
+};
+
+const printGrassAxel = (i, j) => {
+  const onLineEnd = j === mapWidth - 1;
+  axel.bg(0, 255, 0);
+  axel.fg(255, 255, 255);
+  for (let n = 0; n < 3; n++) {
+    axel.text(j + 1 + n + (onLineEnd ? 6 : 0), i + 1 - carHeight, '⋮');
+  }
 };
 
 const printGameAxel = () => {
@@ -222,6 +231,7 @@ const printGameAxel = () => {
     for (let j = 0; j < map[i].length; j++) {
       if (j === 0 || j === mapWidth - 1) {
         printMapBorderAxel(i, j);
+        printGrassAxel(i, j);
       }
       axel.bg(...mapColor);
       if (typeof map[i][j] === 'object') {
@@ -229,10 +239,10 @@ const printGameAxel = () => {
         if (map[i][j].backgroundColor) {
           axel.bg(...map[i][j].backgroundColor);
         }
-        axel.text(j + 1 + 1, i + 1 - carHeight, map[i][j].character);
+        axel.text(j + 1 + 4, i + 1 - carHeight, map[i][j].character);
       } else {
         axel.fg(...mapTextureColor);
-        axel.text(j + 1 + 1, i + 1 - carHeight, map[i][j]);
+        axel.text(j + 1 + 4, i + 1 - carHeight, map[i][j]);
       }
     }
   }
