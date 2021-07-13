@@ -237,12 +237,14 @@ const checkCollision = (player, enemies) => {
           playerCoordinate.x === enemyCoordinate.x &&
           playerCoordinate.y === enemyCoordinate.y
         ) {
-          console.log('Game Over!');
-          process.exit();
+          return true;
+          // console.log('Game Over!');
+          // process.exit();
         }
       }
     }
   }
+  return false;
 };
 
 const movePlayer = (player) => {
@@ -285,7 +287,11 @@ const moveEnemies = (enemies) => {
 const runGame = () => {
   moveEnemies(enemies);
   printGameAxel();
-  checkCollision(player, enemies);
+  // checkCollision(player, enemies);
+  if (checkCollision(player, enemies)) {
+    clearInterval(intervalId);
+    return;
+  }
   step++;
   if (
     enemies.length === 0 ||
