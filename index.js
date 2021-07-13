@@ -113,6 +113,10 @@ const playerStartingPosition = () => {
   });
 };
 
+const getAllCarColorNames = () => {
+  return Object.keys(carColors);
+};
+
 const setCarColor = (car, colorName) => {
   car.color = carColors[colorName];
 };
