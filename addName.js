@@ -1,10 +1,17 @@
 const term = require('terminal-kit').terminal;
 const index = require('./index');
+const CFonts = require('cfonts');
 
 const addName = () => {
   console.clear();
-  term.red(
-    'Please enter your name.\nThe game will start after pressing the Enter key.\n'
+
+  CFonts.say(
+    'Please, enter your name.\n After pressing Enter, the game will start.',
+    {
+      font: 'tiny',
+      align: 'center',
+      colors: ['yellow', 'black']
+    }
   );
 
   term.inputField(function (_error, input) {
@@ -13,4 +20,4 @@ const addName = () => {
   });
 };
 
-exports.addName = addName;
+module.exports = { addName };
