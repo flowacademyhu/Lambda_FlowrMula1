@@ -24,6 +24,9 @@ const carColors = {
   yellow: [255, 255, 0],
   pink: [255, 192, 203]
 };
+const tireCharacter = '◼';
+const bodyCharacter = '█';
+const noseCharacter = '▲';
 let printGameInterval;
 let intervalId;
 let step;
@@ -32,49 +35,49 @@ let score;
 const generateCarPattern = (car, startingCoordinates) => {
   const coordinates = [];
   startingCoordinates.color = car.color; // nose
-  startingCoordinates.character = '▲';
+  startingCoordinates.character = noseCharacter;
   coordinates.push(startingCoordinates);
   let obj = {}; // tire front left
   obj.x = startingCoordinates.x - 1;
   obj.y = startingCoordinates.y + 1;
   obj.color = tireColor;
-  obj.character = '◼';
+  obj.character = tireCharacter;
   coordinates.push(obj);
   obj = {}; // body front
   obj.x = startingCoordinates.x;
   obj.y = startingCoordinates.y + 1;
   obj.color = car.color;
-  obj.character = '█';
+  obj.character = bodyCharacter;
   coordinates.push(obj);
   obj = {}; // tire front right
   obj.x = startingCoordinates.x + 1;
   obj.y = startingCoordinates.y + 1;
   obj.color = tireColor;
-  obj.character = '◼';
+  obj.character = tireCharacter;
   coordinates.push(obj);
   obj = {}; // body middle
   obj.x = startingCoordinates.x;
   obj.y = startingCoordinates.y + 2;
   obj.color = car.color;
-  obj.character = '█';
+  obj.character = bodyCharacter;
   coordinates.push(obj);
   obj = {}; // tire rear left
   obj.x = startingCoordinates.x - 1;
   obj.y = startingCoordinates.y + 3;
   obj.color = tireColor;
-  obj.character = '◼';
+  obj.character = tireCharacter;
   coordinates.push(obj);
   obj = {}; // body rear
   obj.x = startingCoordinates.x;
   obj.y = startingCoordinates.y + 3;
   obj.color = car.color;
-  obj.character = '█';
+  obj.character = bodyCharacter;
   coordinates.push(obj);
   obj = {}; // tire rear right
   obj.x = startingCoordinates.x + 1;
   obj.y = startingCoordinates.y + 3;
   obj.color = tireColor;
-  obj.character = '◼';
+  obj.character = tireCharacter;
   coordinates.push(obj);
   car.coordinates = coordinates;
 };
