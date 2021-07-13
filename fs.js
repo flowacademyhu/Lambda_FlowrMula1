@@ -35,6 +35,14 @@ Cfonts.say(
   }
 );
 
+Cfonts.say('Press enter to the menu', {
+  font: 'shade',
+  align: 'center',
+  //   letterSpacing: ,
+  colors: ['white'],
+  size: '18'
+});
+
 // term.grabInput({ mouse: 'button' });
 
 // term.on('key', function (name) {
