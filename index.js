@@ -24,7 +24,6 @@ const carColors = {
   yellow: [255, 255, 0],
   pink: [255, 192, 203]
 };
-const carCharacter = '*';
 let printGameInterval;
 let intervalId;
 let step;
@@ -32,42 +31,50 @@ let score;
 
 const generateCarPattern = (car, startingCoordinates) => {
   const coordinates = [];
-  startingCoordinates.color = car.color;
-  coordinates.push(startingCoordinates); // nose
+  startingCoordinates.color = car.color; // nose
+  startingCoordinates.character = '▲';
+  coordinates.push(startingCoordinates);
   let obj = {}; // tire front left
   obj.x = startingCoordinates.x - 1;
   obj.y = startingCoordinates.y + 1;
   obj.color = tireColor;
+  obj.character = '◼';
   coordinates.push(obj);
   obj = {}; // body front
   obj.x = startingCoordinates.x;
   obj.y = startingCoordinates.y + 1;
   obj.color = car.color;
+  obj.character = '█';
   coordinates.push(obj);
   obj = {}; // tire front right
   obj.x = startingCoordinates.x + 1;
   obj.y = startingCoordinates.y + 1;
   obj.color = tireColor;
+  obj.character = '◼';
   coordinates.push(obj);
   obj = {}; // body middle
   obj.x = startingCoordinates.x;
   obj.y = startingCoordinates.y + 2;
   obj.color = car.color;
+  obj.character = '█';
   coordinates.push(obj);
   obj = {}; // tire rear left
   obj.x = startingCoordinates.x - 1;
   obj.y = startingCoordinates.y + 3;
   obj.color = tireColor;
+  obj.character = '◼';
   coordinates.push(obj);
   obj = {}; // body rear
   obj.x = startingCoordinates.x;
   obj.y = startingCoordinates.y + 3;
   obj.color = car.color;
+  obj.character = '█';
   coordinates.push(obj);
   obj = {}; // tire rear right
   obj.x = startingCoordinates.x + 1;
   obj.y = startingCoordinates.y + 3;
   obj.color = tireColor;
+  obj.character = '◼';
   coordinates.push(obj);
   car.coordinates = coordinates;
 };
@@ -177,7 +184,7 @@ const printGameAxel = () => {
       axel.bg(...mapColor);
       if (typeof map[i][j] === 'object') {
         axel.fg(...map[i][j].color);
-        axel.text(j + 1, i + 1 - carHeight, carCharacter);
+        axel.text(j + 1, i + 1 - carHeight, map[i][j].character);
       } else {
         axel.text(j + 1, i + 1 - carHeight, map[i][j]);
       }
