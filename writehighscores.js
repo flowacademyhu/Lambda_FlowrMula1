@@ -9,3 +9,5 @@ const writeScores = (name, score) => {
 module.exports = {
   writeScores
 };
+
+writeScores('Béla', '80');

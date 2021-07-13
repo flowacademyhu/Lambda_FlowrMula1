@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/flowacademyhu/Lambda_FlowrMula1#readme",
   "dependencies": {
+    "@halfhelix/terminal-kit": "0.0.1-beta.33",
+    "cfonts": "^2.9.3",
     "table": "^6.7.1",
     "terminal-kit": "^2.1.5"
   }
