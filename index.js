@@ -31,6 +31,7 @@ const bodyCharacter = '█';
 const noseCharacter = '▲';
 const driverCharacter = '◉';
 const mapBorderCharacter = '≣';
+const grassCharacter = '⋮';
 const levelText = 'Level:';
 const scoreText = 'Score:';
 let printGameInterval;
@@ -228,7 +229,11 @@ const printGrassAxel = (i, j) => {
   axel.bg(0, 255, 0);
   axel.fg(255, 255, 255);
   for (let n = 0; n < 3; n++) {
-    axel.text(j + 1 + n + (onLineEnd ? 6 : 0), i + 1 - carHeight, '⋮');
+    axel.text(
+      j + 1 + n + (onLineEnd ? 6 : 0),
+      i + 1 - carHeight,
+      grassCharacter
+    );
   }
 };
 
