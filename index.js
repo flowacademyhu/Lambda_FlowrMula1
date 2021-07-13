@@ -1,4 +1,3 @@
-// ≣
 const axel = require('axel');
 const stdin = process.stdin;
 stdin.setRawMode(true);
@@ -135,7 +134,7 @@ const addEnemy = () => {
 };
 
 const generateMap = (width, height) => {
-  const row = '⋮'.repeat(width).split('');
+  const row = '|'.repeat(width).split('');
   const map = [];
   for (let i = 0; i < height; i++) {
     map.push([...row]);
