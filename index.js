@@ -167,39 +167,18 @@ const printEnemyCars = (enemies, map) => {
   }
 };
 
-const movePlayerHorizontally = (player, x) => {
-  if (x === -1) {
-    if (player.coordinates[1].x === 0) {
-      return;
-    }
-    for (let i = 0; i < player.coordinates.length; i++) {
-      player.coordinates[i].x -= 1;
-    }
-  } else if (x === 1) {
-    if (player.coordinates[3].x === mapWidth - 1) {
-      return;
-    }
-    for (let i = 0; i < player.coordinates.length; i++) {
-      player.coordinates[i].x += 1;
-    }
+const movePlayerCar = (player, x, y) => {
+  if (
+    (x === -1 && player.coordinates[1].x === 0) ||
+    (x === 1 && player.coordinates[3].x === mapWidth - 1) ||
+    (y === 1 && player.coordinates[3].y === mapHeight - 7) ||
+    (y === -1 && player.coordinates[1].y === 5)
+  ) {
+    return;
   }
-};
-
-const movePlayerVertically = (player, y) => {
-  if (y === -1) {
-    if (player.coordinates[1].y === 5) {
-      return;
-    }
-    for (let i = 0; i < player.coordinates.length; i++) {
-      player.coordinates[i].y -= 1;
-    }
-  } else if (y === 1) {
-    if (player.coordinates[3].y === mapHeight - 7) {
-      return;
-    }
-    for (let i = 0; i < player.coordinates.length; i++) {
-      player.coordinates[i].y += 1;
-    }
+  for (let i = 0; i < player.coordinates.length; i++) {
+    player.coordinates[i].x += x;
+    player.coordinates[i].y += y;
   }
 };
 
@@ -296,13 +275,13 @@ const movePlayer = (player) => {
     if (key === 'q') {
       process.exit();
     } else if (key === 'a') {
-      movePlayerHorizontally(player, -1);
+      movePlayerCar(player, -1, 0);
     } else if (key === 'd') {
-      movePlayerHorizontally(player, 1);
+      movePlayerCar(player, 1, 0);
     } else if (key === 'w') {
-      movePlayerVertically(player, -1);
+      movePlayerCar(player, 0, -1);
     } else if (key === 's') {
-      movePlayerVertically(player, 1);
+      movePlayerCar(player, 0, 1);
     }
     printGameAxel();
   });
