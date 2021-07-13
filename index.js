@@ -31,9 +31,11 @@ const bodyCharacter = '█';
 const noseCharacter = '▲';
 const driverCharacter = '◉';
 const mapBorderCharacter = '≣';
+const levelText = 'Level:';
 const scoreText = 'Score:';
 let printGameInterval;
 let intervalId;
+let level;
 let step;
 let score;
 
@@ -206,6 +208,14 @@ const printScoreAxel = () => {
   );
 };
 
+const printLevelAxel = () => {
+  axel.text(
+    0,
+    mapHeight - carHeight * 2 + 2,
+    levelText + level.toString().padStart(mapWidth + 8 - levelText.length, ' ')
+  );
+};
+
 const printMapBorderAxel = (i, j) => {
   const onLineEnd = j === mapWidth - 1;
   axel.bg(255, 255, 255);
@@ -247,6 +257,7 @@ const printGameAxel = () => {
     }
   }
   printScoreAxel();
+  printLevelAxel();
   // axel.text(0, mapHeight - carHeight * 2 + 2, 'Step: ' + step);
   // axel.text(0, mapHeight - carHeight * 2 + 3, 'Interval: ' + printGameInterval);
   axel.cursor.restore();
@@ -327,6 +338,7 @@ const runGame = () => {
     step % reduceIntervalAtStep === 0 &&
     printGameInterval >= minimumInterval + reduceIntervalBy
   ) {
+    level++;
     printGameInterval -= reduceIntervalBy;
     clearInterval(intervalId);
     intervalId = setInterval(runGame, printGameInterval);
@@ -335,6 +347,7 @@ const runGame = () => {
 
 const startGame = (player, enemies) => {
   printGameInterval = defaultPrintGameInterval;
+  level = 1;
   score = 0;
   step = 0;
   setCarColor(player, 'blue');
