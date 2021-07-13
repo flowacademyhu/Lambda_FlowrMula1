@@ -14,6 +14,7 @@ const addEnemyFrequencyPercent = 0.5;
 const carHeight = 4;
 const mapColor = [211, 211, 211]; // lightgray
 const tireColor = [0, 0, 0]; // black
+const cockpitColor = [47, 79, 79]; // darkslategray
 const carColors = {
   red: [255, 0, 0],
   green: [0, 255, 0],
@@ -27,6 +28,7 @@ const carColors = {
 const tireCharacter = '◼';
 const bodyCharacter = '█';
 const noseCharacter = '▲';
+const driverCharacter = '◉';
 let printGameInterval;
 let intervalId;
 let step;
@@ -55,8 +57,21 @@ const generateCarPattern = (car, startingCoordinates) => {
   obj.color = tireColor;
   obj.character = tireCharacter;
   coordinates.push(obj);
-  obj = {}; // body middle
+  obj = {}; // body left
+  obj.x = startingCoordinates.x - 1;
+  obj.y = startingCoordinates.y + 2;
+  obj.color = car.color;
+  obj.character = bodyCharacter;
+  coordinates.push(obj);
+  obj = {}; // body middle, driver
   obj.x = startingCoordinates.x;
+  obj.y = startingCoordinates.y + 2;
+  obj.color = car.color;
+  obj.backgroundColor = cockpitColor;
+  obj.character = driverCharacter;
+  coordinates.push(obj);
+  obj = {}; // body right
+  obj.x = startingCoordinates.x + 1;
   obj.y = startingCoordinates.y + 2;
   obj.color = car.color;
   obj.character = bodyCharacter;
@@ -187,6 +202,9 @@ const printGameAxel = () => {
       axel.bg(...mapColor);
       if (typeof map[i][j] === 'object') {
         axel.fg(...map[i][j].color);
+        if (map[i][j].backgroundColor) {
+          axel.bg(...map[i][j].backgroundColor);
+        }
         axel.text(j + 1, i + 1 - carHeight, map[i][j].character);
       } else {
         axel.text(j + 1, i + 1 - carHeight, map[i][j]);
