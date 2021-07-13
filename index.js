@@ -32,6 +32,7 @@ const noseCharacter = '▲';
 const driverCharacter = '◉';
 const mapBorderCharacter = '≣';
 const grassCharacter = '⋮';
+const mapTextureCharacter = '|';
 const levelText = 'Level:';
 const scoreText = 'Score:';
 let printGameInterval;
@@ -142,7 +143,7 @@ const addEnemy = () => {
 };
 
 const generateMap = (width, height) => {
-  const row = '|'.repeat(width).split('');
+  const row = mapTextureCharacter.repeat(width).split('');
   const map = [];
   for (let i = 0; i < height; i++) {
     map.push([...row]);
