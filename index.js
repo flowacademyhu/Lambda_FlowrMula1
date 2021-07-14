@@ -344,7 +344,7 @@ const startGame = () => {
   level = 1;
   score = 0;
   step = 0;
-  setCarColor(player, 'blue');
+  // setCarColor(player, 'blue');
   playerStartingPosition();
   movePlayer(player);
   intervalId = setInterval(runGame, printGameInterval);
@@ -352,4 +352,4 @@ const startGame = () => {
 
 // startGame(player, enemies);
 
-module.exports = { startGame, player };
+module.exports = { startGame, player, setCarColor };

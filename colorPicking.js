@@ -1,6 +1,7 @@
 const term = require('terminal-kit').terminal;
 const CFonts = require('cfonts');
 const addName = require('./addName');
+const index = require('./index');
 
 const colorPicking = () => {
   console.clear();
@@ -38,6 +39,7 @@ const colorPicking = () => {
         colors: ['red', 'black']
       }).string
     ) {
+      index.setCarColor(index.player, 'red');
       addName.addName();
     }
     if (
@@ -48,6 +50,7 @@ const colorPicking = () => {
         colors: ['red', 'black']
       }).string
     ) {
+      index.setCarColor(index.player, 'blue');
       addName.addName();
     }
     if (
@@ -58,6 +61,7 @@ const colorPicking = () => {
         colors: ['red', 'black']
       }).string
     ) {
+      index.setCarColor(index.player, 'green');
       addName.addName();
     }
   });
