@@ -1,6 +1,7 @@
 const term = require('terminal-kit').terminal;
 const CFonts = require('cfonts');
 const colorPicking = require('./colorPicking');
+const leaderboard = require('./leaderboard');
 
 const menu = () => {
   console.clear();
@@ -41,14 +42,16 @@ const menu = () => {
     ) {
       colorPicking.colorPicking();
     }
-    // if (response.selectedText === CFonts.render('High score', {
-    //   font: 'tiny',
-    //   align: 'center',
-    //   colors: ['red', 'black']
-    // }).string,
-    // ) {
-    //   highscore.highscore();
-    // }
+    if (
+      response.selectedText ===
+      CFonts.render('High score', {
+        font: 'tiny',
+        align: 'center',
+        colors: ['red', 'black']
+      }).string
+    ) {
+      leaderboard.leaderboard(menu);
+    }
     if (
       response.selectedText ===
       CFonts.render('Exit', {
