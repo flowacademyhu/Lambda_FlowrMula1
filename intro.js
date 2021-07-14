@@ -1,20 +1,35 @@
+const term = require('terminal-kit').terminal;
 const CFonts = require('cfonts');
+const menu = require('./menu');
 
-CFonts.say('Team Mate Studio|presents...', {
-  font: 'block', // define the font face
-  align: 'center', // define text alignment
-  colors: ['red', 'black'] // define all colors
-});
+const intro = () => {
+  console.clear();
 
-CFonts.say('Flowrmula 1!', {
-  font: 'block', // define the font face
-  align: 'center', // define text alignment
-  colors: ['red', 'black'] // define all colors
-});
+  CFonts.say('Team Mate Studios|presents...', {
+    font: 'tiny',
+    align: 'center',
+    colors: ['red', 'black']
+  });
 
-CFonts.say('Press enter to continue...', {
-  font: 'tiny',
-  align: 'center'
-});
+  CFonts.say('Flowrmula 1', {
+    font: 'tiny',
+    align: 'center',
+    gradient: ['yellow', 'red']
+  });
 
-// exports.intro = intro;
+  CFonts.say('Press SPACE to continue...', {
+    font: 'tiny',
+    align: 'center'
+  });
+
+  term.grabInput();
+
+  term.on('key', function (name) {
+    if (name === ' ') {
+      term.removeAllListeners('key');
+      menu.menu();
+    }
+  });
+};
+
+intro();
