@@ -40,7 +40,6 @@ let printGameInterval;
 let intervalId;
 let level;
 let step;
-let score;
 
 const generateCarPattern = (car, startingCoordinates) => {
   const coordinates = [];
@@ -105,7 +104,7 @@ const generateCarPattern = (car, startingCoordinates) => {
   car.coordinates = coordinates;
 };
 
-const player = {};
+const player = { score: 0 };
 const enemies = [];
 
 const playerStartingPosition = () => {
@@ -190,7 +189,8 @@ const printScoreAxel = () => {
   axel.text(
     0,
     mapHeight - carHeight * 2 + 1,
-    scoreText + score.toString().padStart(mapWidth + 8 - scoreText.length, ' ')
+    scoreText +
+      player.score.toString().padStart(mapWidth + 8 - scoreText.length, ' ')
   );
 };
 
@@ -307,7 +307,7 @@ const moveEnemies = (enemies) => {
   for (let i = 0; i < enemies.length; i++) {
     if (isEnemyDown(enemies[i])) {
       removeEnemy(i);
-      score++;
+      player.score++;
     }
   }
 };
@@ -342,7 +342,7 @@ const runGame = () => {
 const startGame = () => {
   printGameInterval = defaultPrintGameInterval;
   level = 1;
-  score = 0;
+  player.score = 0;
   step = 0;
   // setCarColor(player, 'blue');
   playerStartingPosition();
