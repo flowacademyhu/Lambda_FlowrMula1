@@ -1,0 +1,8 @@
+Maya;69
+Béla;80
+Endre;30
+Lajos;97
+Attila;30
+Ákos; 23
+Erik;36
+Kornél;50
