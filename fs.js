@@ -35,11 +35,10 @@ Cfonts.say(
   }
 );
 
-Cfonts.say('Press enter to the menu', {
-  font: 'shade',
+Cfonts.say('Press enter to go back to the menu', {
+  font: 'tiny',
   align: 'center',
-  //   letterSpacing: ,
-  colors: ['white'],
+  //   letterSpacing: ,,
   size: '18'
 });
 
