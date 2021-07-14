@@ -3,6 +3,7 @@ const stdin = process.stdin;
 stdin.setRawMode(true);
 stdin.resume();
 stdin.setEncoding('utf8');
+const table = require('table').table;
 
 const mapWidth = 11;
 const mapHeight = 25;
@@ -271,6 +272,10 @@ const checkCollision = (player, enemies) => {
 };
 
 const movePlayer = (player) => {
+  const stdin = process.stdin;
+  stdin.setRawMode(true);
+  stdin.resume();
+  stdin.setEncoding('utf8');
   stdin.on('data', (key) => {
     if (key === 'q') {
       process.exit();
@@ -334,7 +339,7 @@ const runGame = () => {
   }
 };
 
-const startGame = (player, enemies) => {
+const startGame = () => {
   printGameInterval = defaultPrintGameInterval;
   level = 1;
   score = 0;
@@ -345,4 +350,6 @@ const startGame = (player, enemies) => {
   intervalId = setInterval(runGame, printGameInterval);
 };
 
-startGame(player, enemies);
+// startGame(player, enemies);
+
+module.exports = { startGame, player };

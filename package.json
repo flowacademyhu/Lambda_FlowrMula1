@@ -17,6 +17,9 @@
   },
   "homepage": "https://github.com/flowacademyhu/Lambda_FlowrMula1#readme",
   "dependencies": {
-    "axel": "0.0.3"
+    "axel": "0.0.3",
+    "cfonts": "^2.9.3",
+    "table": "^6.7.1",
+    "terminal-kit": "^2.1.5"
   }
 }
