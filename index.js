@@ -1,8 +1,4 @@
 const axel = require('axel');
-const stdin = process.stdin;
-// stdin.setRawMode(true);
-// stdin.resume();
-// stdin.setEncoding('utf8');
 const table = require('table').table;
 
 const mapWidth = 11;
