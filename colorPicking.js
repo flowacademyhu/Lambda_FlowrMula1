@@ -1,6 +1,6 @@
 const term = require('terminal-kit').terminal;
-const addName = require('./addName');
 const CFonts = require('cfonts');
+const addName = require('./addName');
 
 const colorPicking = () => {
   console.clear();
