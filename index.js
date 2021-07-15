@@ -1,6 +1,7 @@
+const CFonts = require('cfonts');
 const axel = require('axel');
 const table = require('table').table;
-const crashMessage = require('./crashMessage');
+const scores = require('./writehighscores');
 
 const mapWidth = 11;
 const mapHeight = 25;
@@ -259,6 +260,16 @@ const checkCollision = (player, enemies) => {
           playerCoordinate.x === enemyCoordinate.x &&
           playerCoordinate.y === enemyCoordinate.y
         ) {
+          console.clear();
+          CFonts.say(
+            'Oops-a-daisy! You wrecked your car.\n Press ENTER to go back to the menu.',
+            {
+              font: 'tiny',
+              align: 'center',
+              colors: ['yellow', 'black']
+            }
+          ),
+          scores.writeScores(player.name, player.score);
           return true;
           // console.log('Game Over!');
           // process.exit();
@@ -276,6 +287,7 @@ const movePlayer = (player) => {
   stdin.setEncoding('utf8');
   stdin.on('data', (key) => {
     if (key === 'q') {
+      console.clear();
       process.exit();
     } else if (key === 'a') {
       movePlayerCar(player, -1, 0);
@@ -318,7 +330,6 @@ const runGame = (menu) => {
   // checkCollision(player, enemies);
   if (checkCollision(player, enemies)) {
     clearInterval(intervalId);
-    crashMessage.crashMessage(menu);
     gameOver = true;
     return;
   }

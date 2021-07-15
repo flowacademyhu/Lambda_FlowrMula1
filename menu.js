@@ -34,6 +34,7 @@ const menu = () => {
 
   term.singleColumnMenu(items, function (_error, response) {
     console.clear();
+
     if (
       response.selectedText ===
       CFonts.render('New game', {
@@ -62,7 +63,6 @@ const menu = () => {
         colors: ['red', 'black']
       }).string
     ) {
-      scores.writeScores(player.name, player.score);
       process.exit();
     }
   });
