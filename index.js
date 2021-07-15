@@ -307,7 +307,7 @@ const moveEnemies = (enemies) => {
   for (let i = 0; i < enemies.length; i++) {
     if (isEnemyDown(enemies[i])) {
       removeEnemy(i);
-      // audio.playScoreSound();
+      audio.playScoreSound();
       player.score++;
     }
   }
