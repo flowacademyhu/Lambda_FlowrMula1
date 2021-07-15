@@ -1,5 +1,6 @@
 const axel = require('axel');
 const table = require('table').table;
+const audio = require('./audio');
 
 const mapWidth = 11;
 const mapHeight = 25;
@@ -316,6 +317,7 @@ const runGame = () => {
   printGameAxel();
   // checkCollision(player, enemies);
   if (checkCollision(player, enemies)) {
+    audio.playCrash();
     clearInterval(intervalId);
     gameOver = true;
     return;
