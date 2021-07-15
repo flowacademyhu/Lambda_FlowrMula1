@@ -11,7 +11,7 @@ const playScoreSound = () => {
   player.play(score);
 };
 
-const playCrash = () => {
+const playCrashSound = () => {
   player.play(crash);
 };
 
@@ -35,5 +35,5 @@ module.exports = {
   playMenuMusic,
   playGameMusic,
   playScoreSound,
-  playCrash
+  playCrashSound
 };

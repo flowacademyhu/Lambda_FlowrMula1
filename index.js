@@ -318,7 +318,7 @@ const runGame = () => {
   printGameAxel();
   // checkCollision(player, enemies);
   if (checkCollision(player, enemies)) {
-    audio.playCrash();
+    audio.playCrashSound();
     clearInterval(intervalId);
     gameOver = true;
     return;
