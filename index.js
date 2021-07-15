@@ -262,14 +262,14 @@ const checkCollision = (player, enemies) => {
         ) {
           console.clear();
           CFonts.say(
-            'Oops-a-daisy! You wrecked your car.\n Press ENTER to go back to the menu.',
+            'Oops-a-daisy! You wrecked your car.\n Press Q to exit the game.',
             {
               font: 'tiny',
               align: 'center',
               colors: ['yellow', 'black']
             }
           ),
-          scores.writeScores(player.name, player.score);
+            scores.writeScores(player.name, player.score);
           return true;
           // console.log('Game Over!');
           // process.exit();
