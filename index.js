@@ -343,6 +343,7 @@ const runGame = () => {
 
 const startGame = () => {
   audio.playMenuMusic(false);
+  audio.playGameMusic(true);
   printGameInterval = defaultPrintGameInterval;
   gameOver = false;
   level = 1;
