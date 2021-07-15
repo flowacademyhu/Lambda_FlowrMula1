@@ -1,8 +1,10 @@
 const term = require('terminal-kit').terminal;
 const CFonts = require('cfonts');
 const menu = require('./menu');
+const audio = require('./audio');
 
 const intro = () => {
+  audio.playMenuMusic(true);
   console.clear();
 
   CFonts.say('Team Mate Studios|presents...', {
