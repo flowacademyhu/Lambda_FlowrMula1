@@ -28,7 +28,7 @@ const leaderboard = (menu) => {
   array = array.map((index) => index.split(';'));
   array = array.map((elem) => [elem[0], Number(elem[1])]);
   array = array.sort((a, b) => b[1] - a[1]);
-  array = array.slice(0, 6);
+  array = array.slice(1, 6);
 
   Cfonts.say('Leaderboard', {
     font: 'block',
