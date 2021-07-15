@@ -1,9 +1,1 @@
-MateRules;1
-
-asd;0
-ErikWasRight;1
-Player1;0
-Player1;0
-Player1;0
-Player1;0
-Player1;0
+God;1000
