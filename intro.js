@@ -17,7 +17,7 @@ const intro = () => {
     gradient: ['yellow', 'red']
   });
 
-  CFonts.say('Press SPACE to continue...', {
+  CFonts.say('Press ENTER to continue...', {
     font: 'tiny',
     align: 'center'
   });
@@ -25,7 +25,7 @@ const intro = () => {
   term.grabInput();
 
   term.on('key', function (name) {
-    if (name === ' ') {
+    if (name === 'ENTER') {
       term.removeAllListeners('key');
       menu.menu();
     }
