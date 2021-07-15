@@ -14,6 +14,7 @@ const playScoreSound = () => {
 };
 
 const playCrashSound = () => {
+  playMenuMusic(false);
   player2.volume(100);
   player2.play(crash);
 };
