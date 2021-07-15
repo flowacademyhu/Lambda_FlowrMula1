@@ -3,7 +3,7 @@ const CFonts = require('cfonts');
 const addName = require('./addName');
 const index = require('./index');
 
-const colorPicking = () => {
+const colorPicking = (menu) => {
   console.clear();
 
   CFonts.say('Please, pick a color for your car.', {
@@ -40,7 +40,7 @@ const colorPicking = () => {
       }).string
     ) {
       index.setCarColor(index.player, 'red');
-      addName.addName();
+      addName.addName(menu);
     }
     if (
       response.selectedText ===
@@ -51,7 +51,7 @@ const colorPicking = () => {
       }).string
     ) {
       index.setCarColor(index.player, 'blue');
-      addName.addName();
+      addName.addName(menu);
     }
     if (
       response.selectedText ===
@@ -62,7 +62,7 @@ const colorPicking = () => {
       }).string
     ) {
       index.setCarColor(index.player, 'green');
-      addName.addName();
+      addName.addName(menu);
     }
   });
 };

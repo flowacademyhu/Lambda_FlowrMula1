@@ -2,7 +2,7 @@ const term = require('terminal-kit').terminal;
 const CFonts = require('cfonts');
 const index = require('./index');
 
-const addName = () => {
+const addName = (menu) => {
   console.clear();
 
   CFonts.say(
@@ -19,7 +19,7 @@ const addName = () => {
     if (index.player.name === '') {
       index.player.name = 'Player1';
     }
-    index.startGame();
+    index.startGame(menu);
   });
 };
 

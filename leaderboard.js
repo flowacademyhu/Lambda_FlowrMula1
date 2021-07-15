@@ -31,7 +31,6 @@ const leaderboard = (menu) => {
   array = array.slice(0, 6);
 
   Cfonts.say('Leaderboard', {
-    font: 'tiny',
     font: 'block',
     align: 'center',
     //   letterSpacing: ,

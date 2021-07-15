@@ -9,7 +9,7 @@ const menu = () => {
   console.clear();
 
   CFonts.say('Welcome to Flowrmula 1!\n Buckle in.', {
-    font: 'tiny',
+    font: 'block',
     align: 'center',
     gradient: ['yellow', 'red']
   });
@@ -34,6 +34,7 @@ const menu = () => {
 
   term.singleColumnMenu(items, function (_error, response) {
     console.clear();
+
     if (
       response.selectedText ===
       CFonts.render('New game', {
@@ -42,7 +43,7 @@ const menu = () => {
         colors: ['red', 'black']
       }).string
     ) {
-      colorPicking.colorPicking();
+      colorPicking.colorPicking(menu);
     }
     if (
       response.selectedText ===
@@ -62,7 +63,6 @@ const menu = () => {
         colors: ['red', 'black']
       }).string
     ) {
-      scores.writeScores(player.name, player.score);
       process.exit();
     }
   });

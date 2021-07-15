@@ -1,5 +1,7 @@
+const CFonts = require('cfonts');
 const axel = require('axel');
 const table = require('table').table;
+const scores = require('./writehighscores');
 
 const mapWidth = 11;
 const mapHeight = 25;
@@ -258,6 +260,16 @@ const checkCollision = (player, enemies) => {
           playerCoordinate.x === enemyCoordinate.x &&
           playerCoordinate.y === enemyCoordinate.y
         ) {
+          console.clear();
+          CFonts.say(
+            'Oops-a-daisy! You wrecked your car.\n Press ENTER to go back to the menu.',
+            {
+              font: 'tiny',
+              align: 'center',
+              colors: ['yellow', 'black']
+            }
+          ),
+          scores.writeScores(player.name, player.score);
           return true;
           // console.log('Game Over!');
           // process.exit();
@@ -275,6 +287,7 @@ const movePlayer = (player) => {
   stdin.setEncoding('utf8');
   stdin.on('data', (key) => {
     if (key === 'q') {
+      console.clear();
       process.exit();
     } else if (key === 'a') {
       movePlayerCar(player, -1, 0);
@@ -311,7 +324,7 @@ const moveEnemies = (enemies) => {
   }
 };
 
-const runGame = () => {
+const runGame = (menu) => {
   moveEnemies(enemies);
   printGameAxel();
   // checkCollision(player, enemies);
@@ -335,11 +348,11 @@ const runGame = () => {
     level++;
     printGameInterval -= reduceIntervalBy;
     clearInterval(intervalId);
-    intervalId = setInterval(runGame, printGameInterval);
+    intervalId = setInterval(runGame, printGameInterval, menu);
   }
 };
 
-const startGame = () => {
+const startGame = (menu) => {
   printGameInterval = defaultPrintGameInterval;
   gameOver = false;
   level = 1;
@@ -348,7 +361,7 @@ const startGame = () => {
   // setCarColor(player, 'blue');
   playerStartingPosition();
   movePlayer(player);
-  intervalId = setInterval(runGame, printGameInterval);
+  intervalId = setInterval(runGame, printGameInterval, menu);
 };
 
 // startGame(player, enemies);
