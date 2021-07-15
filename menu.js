@@ -2,7 +2,8 @@ const term = require('terminal-kit').terminal;
 const CFonts = require('cfonts');
 const colorPicking = require('./colorPicking');
 const leaderboard = require('./leaderboard');
-const writeScores = require('./writehighscores');
+const scores = require('./writehighscores');
+const player = require('./index').player;
 
 const menu = () => {
   console.clear();
@@ -61,7 +62,7 @@ const menu = () => {
         colors: ['red', 'black']
       }).string
     ) {
-      writeScores();
+      scores.writeScores(player.name, player.score);
       process.exit();
     }
   });

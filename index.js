@@ -1,8 +1,4 @@
 const axel = require('axel');
-const stdin = process.stdin;
-// stdin.setRawMode(true);
-// stdin.resume();
-// stdin.setEncoding('utf8');
 const table = require('table').table;
 const crashMessage = require('./crashMessage');
 
@@ -41,6 +37,7 @@ let printGameInterval;
 let intervalId;
 let level;
 let step;
+let gameOver;
 
 const generateCarPattern = (car, startingCoordinates) => {
   const coordinates = [];
@@ -289,7 +286,9 @@ const movePlayer = (player) => {
     } else if (key === 's') {
       movePlayerCar(player, 0, 1);
     }
-    printGameAxel();
+    if (!gameOver) {
+      printGameAxel();
+    }
   });
 };
 
@@ -320,6 +319,7 @@ const runGame = (menu) => {
   if (checkCollision(player, enemies)) {
     clearInterval(intervalId);
     crashMessage.crashMessage(menu);
+    gameOver = true;
     return;
   }
   step++;
@@ -343,6 +343,7 @@ const runGame = (menu) => {
 
 const startGame = (menu) => {
   printGameInterval = defaultPrintGameInterval;
+  gameOver = false;
   level = 1;
   player.score = 0;
   step = 0;
