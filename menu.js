@@ -64,7 +64,6 @@ const menu = () => {
     ) {
       scores.writeScores(player.name, player.score);
       process.exit();
-      a;
     }
   });
 };
