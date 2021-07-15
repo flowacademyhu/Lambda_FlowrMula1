@@ -4,6 +4,7 @@ const stdin = process.stdin;
 // stdin.resume();
 // stdin.setEncoding('utf8');
 const table = require('table').table;
+const crashMessage = require('./crashMessage');
 
 const mapWidth = 11;
 const mapHeight = 25;
@@ -312,12 +313,13 @@ const moveEnemies = (enemies) => {
   }
 };
 
-const runGame = () => {
+const runGame = (menu) => {
   moveEnemies(enemies);
   printGameAxel();
   // checkCollision(player, enemies);
   if (checkCollision(player, enemies)) {
     clearInterval(intervalId);
+    crashMessage.crashMessage(menu);
     return;
   }
   step++;
@@ -335,11 +337,11 @@ const runGame = () => {
     level++;
     printGameInterval -= reduceIntervalBy;
     clearInterval(intervalId);
-    intervalId = setInterval(runGame, printGameInterval);
+    intervalId = setInterval(runGame, printGameInterval, menu);
   }
 };
 
-const startGame = () => {
+const startGame = (menu) => {
   printGameInterval = defaultPrintGameInterval;
   level = 1;
   player.score = 0;
@@ -347,7 +349,7 @@ const startGame = () => {
   // setCarColor(player, 'blue');
   playerStartingPosition();
   movePlayer(player);
-  intervalId = setInterval(runGame, printGameInterval);
+  intervalId = setInterval(runGame, printGameInterval, menu);
 };
 
 // startGame(player, enemies);

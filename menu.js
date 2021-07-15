@@ -8,7 +8,7 @@ const menu = () => {
   console.clear();
 
   CFonts.say('Welcome to Flowrmula 1!\n Buckle in.', {
-    font: 'tiny',
+    font: 'block',
     align: 'center',
     gradient: ['yellow', 'red']
   });
@@ -41,7 +41,7 @@ const menu = () => {
         colors: ['red', 'black']
       }).string
     ) {
-      colorPicking.colorPicking();
+      colorPicking.colorPicking(menu);
     }
     if (
       response.selectedText ===
