@@ -18,8 +18,6 @@ const leaderboard = (menu) => {
     if (err) {
       return console.log(err);
     }
-    //   array = data;
-    //   return array;
   });
   const fileToString = fs.readFileSync('./scores.txt').toString('utf-8');
   array = fileToString;
@@ -33,7 +31,6 @@ const leaderboard = (menu) => {
   Cfonts.say('Leaderboard', {
     font: 'block',
     align: 'center',
-    //   letterSpacing: ,
     colors: ['yellow', 'black']
   });
 
@@ -49,22 +46,8 @@ const leaderboard = (menu) => {
   Cfonts.say('Press enter to go back to the menu', {
     font: 'tiny',
     align: 'center',
-    //   letterSpacing: ,,
     size: '18'
   });
 };
 
 module.exports = { leaderboard };
-
-// term.grabInput({ mouse: 'button' });
-
-// term.on('key', function (name) {
-//   if (name === 'ENTER') {
-//     menu.menu();
-//   }
-// });
-// term.on('key', function (name) {
-//   if (name === 'ENTER') {
-//     menu.menu();
-//   }
-// });

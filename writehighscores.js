@@ -2,7 +2,6 @@ const fs = require('fs');
 const adatok = require('./index');
 const ujAdatok = require('./addName');
 const writeScores = (name, score) => {
-  // if (isEnemyDown === true)
   {
     fs.appendFileSync('./scores.txt', `\n${name};${score}`, 'utf-8');
   }

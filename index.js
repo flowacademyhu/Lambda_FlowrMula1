@@ -1,6 +1,5 @@
 const CFonts = require('cfonts');
 const axel = require('axel');
-const table = require('table').table;
 const scores = require('./writehighscores');
 const audio = require('./audio');
 
@@ -248,8 +247,6 @@ const printGameAxel = () => {
   }
   printScoreAxel();
   printLevelAxel();
-  // axel.text(0, mapHeight - carHeight * 2 + 2, 'Step: ' + step);
-  // axel.text(0, mapHeight - carHeight * 2 + 3, 'Interval: ' + printGameInterval);
   axel.cursor.restore();
 };
 
@@ -270,10 +267,8 @@ const checkCollision = (player, enemies) => {
               colors: ['yellow', 'black']
             }
           ),
-            scores.writeScores(player.name, player.score);
+          scores.writeScores(player.name, player.score);
           return true;
-          // console.log('Game Over!');
-          // process.exit();
         }
       }
     }
@@ -330,14 +325,12 @@ const moveEnemies = (enemies) => {
 const runGame = (menu) => {
   moveEnemies(enemies);
   printGameAxel();
-  // checkCollision(player, enemies);
   if (checkCollision(player, enemies)) {
     audio.playGameMusic(false);
     audio.playCrashSound();
     setTimeout(audio.stopMusicPlayer, 500);
     clearInterval(intervalId);
     gameOver = true;
-    // audio.stopMusicPlayer();
     return;
   }
   step++;
@@ -367,12 +360,9 @@ const startGame = () => {
   level = 1;
   player.score = 0;
   step = 0;
-  // setCarColor(player, 'blue');
   playerStartingPosition();
   movePlayer(player);
   intervalId = setInterval(runGame, printGameInterval);
 };
-
-// startGame(player, enemies);
 
 module.exports = { startGame, player, setCarColor };
