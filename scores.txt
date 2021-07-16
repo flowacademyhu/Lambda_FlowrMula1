@@ -6,3 +6,9 @@ Erik;14
 dzsaki;6
 Player1;0
 PINAAAA;21
+Player1;2
+Player1;1
+Player1;2
+PINAAA;3
+Player1;2
+fsfafgfgs;8

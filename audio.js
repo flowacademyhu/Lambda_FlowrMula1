@@ -2,7 +2,7 @@ const mpg = require('mpg123');
 const player = new mpg.MpgPlayer();
 const player2 = new mpg.MpgPlayer();
 
-const crash = 'sound/sfx_exp_short_soft1.mp3';
+const crash = 'sound/What Are You Doing Step Bro Sound Effect.mp3';
 const menu = 'sound/Mello C.mp3';
 const game = 'sound/Jim Hall - Thumper.mp3';
 const score = 'sound/untitled.mp3';
@@ -28,6 +28,7 @@ const playMenuMusic = (play) => {
 
 const playGameMusic = (play) => {
   if (play) {
+    player.volume(40);
     player.play(game);
   } else {
     player.stop();
