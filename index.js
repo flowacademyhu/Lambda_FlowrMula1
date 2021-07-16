@@ -6,7 +6,7 @@ const audio = require('./audio');
 
 const mapWidth = 40;
 const mapHeight = 40;
-const defaultPrintGameInterval = 550;
+const defaultPrintGameInterval = 450;
 const reduceIntervalBy = 100;
 const minimumInterval = 50;
 const reduceIntervalAtStep = 25;
@@ -270,7 +270,7 @@ const checkCollision = (player, enemies) => {
               colors: ['yellow', 'black']
             }
           ),
-          scores.writeScores(player.name, player.score);
+            scores.writeScores(player.name, player.score);
           return true;
           // console.log('Game Over!');
           // process.exit();
