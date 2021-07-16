@@ -1,1 +1,6 @@
 God;1000
+God;1
+Bela;3
+Player1;0
+Erik;14
+dzsaki;6
