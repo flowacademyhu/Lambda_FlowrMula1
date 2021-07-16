@@ -2,8 +2,7 @@ const term = require('terminal-kit').terminal;
 const CFonts = require('cfonts');
 const colorPicking = require('./colorPicking');
 const leaderboard = require('./leaderboard');
-const scores = require('./writehighscores');
-const player = require('./index').player;
+const audio = require('./audio');
 
 const menu = () => {
   console.clear();
@@ -63,6 +62,7 @@ const menu = () => {
         colors: ['red', 'black']
       }).string
     ) {
+      audio.stopMusicPlayer();
       process.exit();
     }
   });

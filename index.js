@@ -270,7 +270,7 @@ const checkCollision = (player, enemies) => {
               colors: ['yellow', 'black']
             }
           ),
-            scores.writeScores(player.name, player.score);
+          scores.writeScores(player.name, player.score);
           return true;
           // console.log('Game Over!');
           // process.exit();
@@ -289,6 +289,7 @@ const movePlayer = (player) => {
   stdin.on('data', (key) => {
     if (key === 'q') {
       console.clear();
+      audio.stopMusicPlayer();
       process.exit();
     } else if (key === 'a') {
       movePlayerCar(player, -1, 0);
@@ -331,9 +332,12 @@ const runGame = (menu) => {
   printGameAxel();
   // checkCollision(player, enemies);
   if (checkCollision(player, enemies)) {
+    audio.playGameMusic(false);
     audio.playCrashSound();
+    setTimeout(audio.stopMusicPlayer, 500);
     clearInterval(intervalId);
     gameOver = true;
+    // audio.stopMusicPlayer();
     return;
   }
   step++;
