@@ -1,1 +1,16 @@
 God;1000
+Player1;0
+asdsa;4
+asd;0
+ad;0
+asd;8
+asd;9
+ad;30
+asd;159
+probe2;52
+
+proba3;34
+sad;44
+Player1;0
+asd;13
+sadsadsa;32
