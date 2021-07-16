@@ -41,8 +41,10 @@ const playGameMusic = (play) => {
 };
 
 const stopMusicPlayer = () => {
-  player.quit();
-  player2.quit();
+  try {
+    player.quit();
+    player2.quit();
+  } catch (err) {}
 };
 
 module.exports = {
