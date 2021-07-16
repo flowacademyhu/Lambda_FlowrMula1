@@ -3,6 +3,7 @@ const CFonts = require('cfonts');
 const colorPicking = require('./colorPicking');
 const leaderboard = require('./leaderboard');
 const writeScores = require('./writehighscores');
+const audio = require('./audio');
 
 const menu = () => {
   console.clear();
@@ -61,6 +62,7 @@ const menu = () => {
         colors: ['red', 'black']
       }).string
     ) {
+      audio.stopMusicPlayer();
       writeScores();
       process.exit();
     }

@@ -276,6 +276,9 @@ const movePlayer = (player) => {
   stdin.setEncoding('utf8');
   stdin.on('data', (key) => {
     if (key === 'q') {
+      // audio.stopMusicPlayer();
+      // audio.playGameMusic(false);
+      audio.stopMusicPlayer();
       process.exit();
     } else if (key === 'a') {
       movePlayerCar(player, -1, 0);
@@ -318,9 +321,12 @@ const runGame = () => {
   printGameAxel();
   // checkCollision(player, enemies);
   if (checkCollision(player, enemies)) {
+    audio.playGameMusic(false);
     audio.playCrashSound();
+    setTimeout(audio.stopMusicPlayer, 500);
     clearInterval(intervalId);
     gameOver = true;
+    // audio.stopMusicPlayer();
     return;
   }
   step++;
