@@ -9,7 +9,7 @@ const game =
 const score = 'sound/sfx_coin_cluster3.mp3';
 
 const playScoreSound = () => {
-  player2.gain(15);
+  player2.gain(10);
   player2.play(score);
 };
 
