@@ -3,12 +3,12 @@ const player = new mpg.MpgPlayer();
 const player2 = new mpg.MpgPlayer();
 
 const crash = 'sound/sfx_exp_short_soft1.mp3';
-const menu = 'sound/Mello C - Lovusuno.mp3';
+const menu = 'sound/Mello C.mp3';
 const game = 'sound/Jim Hall - Thumper.mp3';
-const score = 'sound/sfx_coin_cluster3.mp3';
+const score = 'sound/untitled.mp3';
 
 const playScoreSound = () => {
-  player2.volume(15);
+  player2.volume(300);
   player2.play(score);
 };
 

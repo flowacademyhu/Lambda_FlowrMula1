@@ -4,3 +4,5 @@ Bela;3
 Player1;0
 Erik;14
 dzsaki;6
+Player1;0
+PINAAAA;21
