@@ -3,6 +3,7 @@ const CFonts = require('cfonts');
 const colorPicking = require('./colorPicking');
 const leaderboard = require('./leaderboard');
 const audio = require('./audio');
+const {renderMenuItem} = require('./menuUtils');
 
 function newGame() {
   colorPicking.colorPicking(menu);
@@ -31,14 +32,6 @@ const items = [
     handler: exit,
   }
 ];
-
-function renderMenuItem(item) {
-  return CFonts.render(item.title, {
-    font: 'tiny',
-    align: 'center',
-    colors: ['red', 'black']
-  }).string
-}
 
 const formattedItems = items.map(renderMenuItem)
 
