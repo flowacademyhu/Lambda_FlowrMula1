@@ -14,24 +14,22 @@ const menu = () => {
   });
 
   const items = [
-    CFonts.render('New game', {
-      font: 'tiny',
-      align: 'center',
-      colors: ['red', 'black']
-    }).string,
-    CFonts.render('High score', {
-      font: 'tiny',
-      align: 'center',
-      colors: ['red', 'black']
-    }).string,
-    CFonts.render('Exit', {
-      font: 'tiny',
-      align: 'center',
-      colors: ['red', 'black']
-    }).string
+    'New game',
+    'High score',
+    'Exit'
   ];
 
-  term.singleColumnMenu(items, function (_error, response) {
+  const formattedItems = []
+
+  for(let i =0; i< items.length; i++) {
+    formattedItems.push(CFonts.render(items[i], {
+      font: 'tiny',
+      align: 'center',
+      colors: ['red', 'black']
+    }).string)
+  }
+
+  term.singleColumnMenu(formattedItems, function (_error, response) {
     console.clear();
 
     if (
