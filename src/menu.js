@@ -32,6 +32,14 @@ const items = [
   }
 ];
 
+function renderMenuItem(item) {
+  return CFonts.render(item.title, {
+    font: 'tiny',
+    align: 'center',
+    colors: ['red', 'black']
+  }).string
+}
+
 const menu = () => {
   console.clear();
 
@@ -41,16 +49,7 @@ const menu = () => {
     gradient: ['yellow', 'red']
   });
 
-  const formattedItems = []
-
-  for(let i =0; i< items.length; i++) {
-    formattedItems.push(CFonts.render(items[i].title, {
-      font: 'tiny',
-      align: 'center',
-      colors: ['red', 'black']
-    }).string)
-  }
-
+  const formattedItems = items.map(renderMenuItem)
 
   term.singleColumnMenu(formattedItems, function (_error, response) {
     console.clear();
