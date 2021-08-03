@@ -6,7 +6,7 @@ const audio = require('./audio');
 const {renderMenuItem} = require('./menuUtils');
 
 function newGame() {
-  colorPicking.colorPicking(menu);
+  colorPicking.colorPicking();
 }
 
 function highScore() {

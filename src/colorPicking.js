@@ -33,7 +33,7 @@ const items = [
 
 const formattedItems = items.map(renderMenuItem)
 
-const colorPicking = (menu) => {
+const colorPicking = () => {
   console.clear();
 
   CFonts.say('Please, pick a color for your car.', {
@@ -47,7 +47,7 @@ const colorPicking = (menu) => {
 
     handler();
 
-    addName.addName(menu);
+    addName.addName();
   });
 };
 
