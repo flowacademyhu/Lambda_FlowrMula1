@@ -2,8 +2,9 @@
   "name": "lambda_flowrmula1",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "intro.js",
   "scripts": {
+    "start": "node intro.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
