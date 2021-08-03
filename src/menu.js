@@ -18,9 +18,18 @@ function exit() {
 }
 
 const items = [
-  'New game',
-  'High score',
-  'Exit'
+  {
+    title: 'New game',
+    handler: newGame,
+  },
+  {
+    title: 'High score',
+    handler: highScore,
+  },
+  {
+    title: 'Exit',
+    handler: exit,
+  }
 ];
 
 const menu = () => {
@@ -35,7 +44,7 @@ const menu = () => {
   const formattedItems = []
 
   for(let i =0; i< items.length; i++) {
-    formattedItems.push(CFonts.render(items[i], {
+    formattedItems.push(CFonts.render(items[i].title, {
       font: 'tiny',
       align: 'center',
       colors: ['red', 'black']
@@ -46,17 +55,9 @@ const menu = () => {
   term.singleColumnMenu(formattedItems, function (_error, response) {
     console.clear();
 
-    const selectedMenuItem = items[response.selectedIndex]
+    const handler = items[response.selectedIndex].handler;
 
-    if (selectedMenuItem === 'New game') {
-      newGame();
-    }
-    if (selectedMenuItem === 'High score') {
-      highScore();
-    }
-    if (selectedMenuItem === 'Exit') {
-      exit();
-    }
+    handler();
   });
 };
 
