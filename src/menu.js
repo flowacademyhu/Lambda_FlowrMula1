@@ -32,13 +32,15 @@ const menu = () => {
   term.singleColumnMenu(formattedItems, function (_error, response) {
     console.clear();
 
-    if (response.selectedIndex === 0) {
+    const selectedMenuItem = items[response.selectedIndex]
+
+    if (selectedMenuItem === 'New game') {
       colorPicking.colorPicking(menu);
     }
-    if (response.selectedIndex === 1) {
+    if (selectedMenuItem === 'High score') {
       leaderboard.leaderboard(menu);
     }
-    if (response.selectedIndex === 2) {
+    if (selectedMenuItem === 'Exit') {
       audio.stopMusicPlayer();
       process.exit();
     }
