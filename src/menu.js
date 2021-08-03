@@ -40,6 +40,8 @@ function renderMenuItem(item) {
   }).string
 }
 
+const formattedItems = items.map(renderMenuItem)
+
 const menu = () => {
   console.clear();
 
@@ -48,8 +50,6 @@ const menu = () => {
     align: 'center',
     gradient: ['yellow', 'red']
   });
-
-  const formattedItems = items.map(renderMenuItem)
 
   term.singleColumnMenu(formattedItems, function (_error, response) {
     console.clear();
