@@ -4,6 +4,25 @@ const colorPicking = require('./colorPicking');
 const leaderboard = require('./leaderboard');
 const audio = require('./audio');
 
+function newGame() {
+  colorPicking.colorPicking(menu);
+}
+
+function highScore() {
+  leaderboard.leaderboard(menu);
+}
+
+function exit() {
+  audio.stopMusicPlayer();
+  process.exit();
+}
+
+const items = [
+  'New game',
+  'High score',
+  'Exit'
+];
+
 const menu = () => {
   console.clear();
 
@@ -12,12 +31,6 @@ const menu = () => {
     align: 'center',
     gradient: ['yellow', 'red']
   });
-
-  const items = [
-    'New game',
-    'High score',
-    'Exit'
-  ];
 
   const formattedItems = []
 
@@ -29,18 +42,6 @@ const menu = () => {
     }).string)
   }
 
-  function newGame() {
-    colorPicking.colorPicking(menu);
-  }
-
-  function highScore() {
-    leaderboard.leaderboard(menu);
-  }
-
-  function exit() {
-    audio.stopMusicPlayer();
-    process.exit();
-  }
 
   term.singleColumnMenu(formattedItems, function (_error, response) {
     console.clear();
