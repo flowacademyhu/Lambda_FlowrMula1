@@ -2,6 +2,36 @@ const term = require('terminal-kit').terminal;
 const CFonts = require('cfonts');
 const addName = require('./addName');
 const index = require('./index');
+const {renderMenuItem} = require('./menuUtils');
+
+function red() {
+  index.setCarColor(index.player, 'red');
+}
+
+function blue() {
+  index.setCarColor(index.player, 'blue');
+}
+
+function green() {
+  index.setCarColor(index.player, 'green');
+}
+
+const items = [
+  {
+    title: 'Red',
+    handler: red,
+  },
+  {
+    title: 'Blue',
+    handler: blue,
+  },
+  {
+    title: 'Green',
+    handler: green,
+  }
+];
+
+const formattedItems = items.map(renderMenuItem)
 
 const colorPicking = (menu) => {
   console.clear();
@@ -12,58 +42,12 @@ const colorPicking = (menu) => {
     colors: ['yellow', 'black']
   });
 
-  const items = [
-    CFonts.render('Red', {
-      font: 'tiny',
-      align: 'center',
-      colors: ['red', 'black']
-    }).string,
-    CFonts.render('Blue', {
-      font: 'tiny',
-      align: 'center',
-      colors: ['red', 'black']
-    }).string,
-    CFonts.render('Green', {
-      font: 'tiny',
-      align: 'center',
-      colors: ['red', 'black']
-    }).string
-  ];
+  term.singleColumnMenu(formattedItems, function (_error, response) {
+    const handler = items[response.selectedIndex].handler;
 
-  term.singleColumnMenu(items, function (_error, response) {
-    if (
-      response.selectedText ===
-      CFonts.render('Red', {
-        font: 'tiny',
-        align: 'center',
-        colors: ['red', 'black']
-      }).string
-    ) {
-      index.setCarColor(index.player, 'red');
-      addName.addName(menu);
-    }
-    if (
-      response.selectedText ===
-      CFonts.render('Blue', {
-        font: 'tiny',
-        align: 'center',
-        colors: ['red', 'black']
-      }).string
-    ) {
-      index.setCarColor(index.player, 'blue');
-      addName.addName(menu);
-    }
-    if (
-      response.selectedText ===
-      CFonts.render('Green', {
-        font: 'tiny',
-        align: 'center',
-        colors: ['red', 'black']
-      }).string
-    ) {
-      index.setCarColor(index.player, 'green');
-      addName.addName(menu);
-    }
+    handler();
+
+    addName.addName(menu);
   });
 };
 
