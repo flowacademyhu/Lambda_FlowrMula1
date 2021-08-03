@@ -29,20 +29,32 @@ const menu = () => {
     }).string)
   }
 
+  function newGame() {
+    colorPicking.colorPicking(menu);
+  }
+
+  function highScore() {
+    leaderboard.leaderboard(menu);
+  }
+
+  function exit() {
+    audio.stopMusicPlayer();
+    process.exit();
+  }
+
   term.singleColumnMenu(formattedItems, function (_error, response) {
     console.clear();
 
     const selectedMenuItem = items[response.selectedIndex]
 
     if (selectedMenuItem === 'New game') {
-      colorPicking.colorPicking(menu);
+      newGame();
     }
     if (selectedMenuItem === 'High score') {
-      leaderboard.leaderboard(menu);
+      highScore();
     }
     if (selectedMenuItem === 'Exit') {
-      audio.stopMusicPlayer();
-      process.exit();
+      exit();
     }
   });
 };
