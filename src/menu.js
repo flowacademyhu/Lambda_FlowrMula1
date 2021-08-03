@@ -32,34 +32,13 @@ const menu = () => {
   term.singleColumnMenu(formattedItems, function (_error, response) {
     console.clear();
 
-    if (
-      response.selectedText ===
-      CFonts.render('New game', {
-        font: 'tiny',
-        align: 'center',
-        colors: ['red', 'black']
-      }).string
-    ) {
+    if (response.selectedIndex === 0) {
       colorPicking.colorPicking(menu);
     }
-    if (
-      response.selectedText ===
-      CFonts.render('High score', {
-        font: 'tiny',
-        align: 'center',
-        colors: ['red', 'black']
-      }).string
-    ) {
+    if (response.selectedIndex === 1) {
       leaderboard.leaderboard(menu);
     }
-    if (
-      response.selectedText ===
-      CFonts.render('Exit', {
-        font: 'tiny',
-        align: 'center',
-        colors: ['red', 'black']
-      }).string
-    ) {
+    if (response.selectedIndex === 2) {
       audio.stopMusicPlayer();
       process.exit();
     }
