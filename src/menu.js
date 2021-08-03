@@ -42,14 +42,18 @@ function renderMenuItem(item) {
 
 const formattedItems = items.map(renderMenuItem)
 
-const menu = () => {
-  console.clear();
-
+function header() {
   CFonts.say('Welcome to Flowrmula 1!\n Buckle in.', {
     font: 'block',
     align: 'center',
     gradient: ['yellow', 'red']
   });
+}
+
+const menu = () => {
+  console.clear();
+
+  header();
 
   term.singleColumnMenu(formattedItems, function (_error, response) {
     console.clear();
